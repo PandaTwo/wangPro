@@ -6,7 +6,8 @@
  * Time: 22:15
  */
 $this->load->view('include/header');
-
-$this->load->view('include/menu');
+if($show_menu){
+    $this->load->view('include/menu');
+}
 $this->load->view($content_text);
 $this->load->view('include/footer');

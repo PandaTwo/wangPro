@@ -134,6 +134,7 @@ if (defined('ENVIRONMENT'))
  * ---------------------------------------------------------------
  */
 
+date_default_timezone_set('Asia/Shanghai');
 	// Set the current directory correctly for CLI requests
 	if (defined('STDIN'))
 	{

@@ -8,17 +8,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
-    <script src="lib/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <script src="lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="/static/lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/lib/font-awesome/css/font-awesome.css">
+    <script src="/static/lib/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="/static/lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function () {
             $(".knob").knob();
         });
     </script>
-    <link rel="stylesheet" type="text/css" href="stylesheets/theme.css">
-    <link rel="stylesheet" type="text/css" href="stylesheets/premium.css">
+    <link rel="stylesheet" type="text/css" href="/static/stylesheets/theme.css">
+    <link rel="stylesheet" type="text/css" href="/static/stylesheets/premium.css">
 </head>
 <body class=" theme-blue">
 <!-- Demo page code -->
@@ -58,11 +58,7 @@
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 <!-- Le fav and touch icons -->
-<link rel="shortcut icon" href="../assets/ico/favicon.ico">
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-<link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+<link rel="shortcut icon" href="favicon.ico">
 <!--[if lt IE 7 ]>
 <body class="ie ie6"> <![endif]-->
 <!--[if IE 7 ]>

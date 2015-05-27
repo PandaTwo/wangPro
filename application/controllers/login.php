@@ -16,7 +16,7 @@ class login extends MY_Controller
     function index()
     {
         $data['content_text'] = 'login';
-
+        $data['show_menu'] = false;
         $this->load->view('template',$data);
     }
 }

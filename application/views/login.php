@@ -1,15 +1,3 @@
-<div class="navbar navbar-default" role="navigation">
-    <div class="navbar-header">
-        <a class="" href="index.html"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> Aircraft</span></a>
-    </div>
-
-    <div class="navbar-collapse collapse" style="height: 1px;">
-
-    </div>
-</div>
-</div>
-
-
 <div class="dialog">
     <div class="panel panel-default">
         <p class="panel-heading no-collapse">Sign In</p>
