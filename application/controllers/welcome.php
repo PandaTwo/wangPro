@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Welcome extends MY_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -19,7 +19,11 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+        $data['content_text'] = 'welcome_message';
+        $data['show_menu'] = true;
+        $data['loginUser'] = $_SESSION['adminUserName'];
+
+		$this->load->view('template',$data);
 	}
 }
 

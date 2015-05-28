@@ -6,27 +6,27 @@
  * Time: 0:29
  */
 
-class m_adminuser extends MY_Model
+class m_adminuser extends CI_Model
 {
     public $table_name = 'adminuser';
+
     function __construct()
     {
         parent :: __construct();
+        $this->load->database();
     }
 
-    function getlist()
+    function getall()
     {
         $this->db->order_by('id desc');
-
         $query = $this->db->get($this->table_name);
-
         return $query->result_array();
     }
 
-    function update($data = array())
+    function updateadminuser($id,$data = array())
     {
         if($data) return false;
-        $this->db->where('id',$data['id']);
+        $this->db->where('id',$id);
         $res = $this->db->update($this->table_name,$data);
         return $res ? true : false;
     }
@@ -38,10 +38,43 @@ class m_adminuser extends MY_Model
         return $res ? true : false;
     }
 
-    function add($data)
+    function addadminuser($data = array())
     {
-        if($data) return false;
+        if(!$data) {
+            return false;
+        }
+        $res = $this->db->insert($this->table_name,$data);
+        return $res ? true : false;
+    }
 
-        return $this->db->insert($this->table_name,$data);
+    function getbyid($id)
+    {
+        if(!$id) return false;
+
+        $this->db->where('id',$id);
+
+        $query = $this->db->get($this->table_name);
+
+        return $query->row_array();
+    }
+
+
+    function checkuserlogin($username,$password)
+    {
+        if(empty($username) || empty($password)) return false;
+
+        $this->db->where(
+            array(
+                'username' => $username,
+                'password' => $password
+            )
+        );
+        $result = $this->db->get($this->table_name);
+        if($result->num_rows() > 0)
+        {
+            return true;
+        }
+
+        return false;
     }
 }

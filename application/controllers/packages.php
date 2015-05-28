@@ -6,7 +6,7 @@
  * Date: 2015/5/25
  * Time: 21:42
  */
-class packages extends CI_Controller
+class packages extends MY_Controller
 {
     function __construct()
     {

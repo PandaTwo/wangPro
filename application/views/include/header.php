@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/static/lib/font-awesome/css/font-awesome.css">
     <script src="/static/lib/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="/static/lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
+    <script src="/static/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function () {
             $(".knob").knob();
@@ -89,14 +90,7 @@
                     <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="./">My Account</a></li>
-                    <li class="divider"></li>
-                    <li class="dropdown-header">Admin Panel</li>
-                    <li><a href="./">Users</a></li>
-                    <li><a href="./">Security</a></li>
-                    <li><a tabindex="-1" href="./">Payments</a></li>
-                    <li class="divider"></li>
-                    <li><a tabindex="-1" href="sign-in.html">Logout</a></li>
+                    <li><a href="/login/logout">Logout</a></li>
                 </ul>
             </li>
         </ul>

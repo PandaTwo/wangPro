@@ -6,9 +6,8 @@
  * Time: 19:19
  */
 
-class adminuser extends CI_Controller
+class adminuser extends MY_Controller
 {
-    public $table_name = 'adminuser';
     function __construct()
     {
         parent :: __construct();
@@ -19,9 +18,45 @@ class adminuser extends CI_Controller
     {
         $data['content_text'] = 'adminuser/list';
         $data['show_menu'] = true;
-        $data['userlist'] = $this->m_adminuser->getall();
+        $data['sourceList'] = $this->m_adminuser->getall();
 
         $this->load->view('template', $data);
+    }
+
+
+
+    function edit()
+    {
+        $id = $this->input->get('id');
+
+        $data['content_text'] = 'adminuser/edit';
+        $data['show_menu'] = true;
+        $data['model'] = $this->m_adminuser->getbyid($id);
+
+        $this->load->view('template', $data);
+    }
+
+    function updatepost()
+    {
+        $postData = $this->input->post();
+        $id = $postData['id'];
+
+        if(!$postData){die('数据错误');}
+
+        $data = array(
+            'username' => $postData['username'],
+            'password' => $postData['password'],
+            'createdOn' => time(),
+            'role' => 1,
+        );
+
+        $res = $this->m_adminuser->updateadminuser($id,$data);
+        if($res)
+        {
+            alert('修改成功','jump','/adminuser/');
+        }else{
+            alert('修改失败','jump','/adminuser/');
+        }
     }
 
     function deletebyid()
@@ -37,19 +72,26 @@ class adminuser extends CI_Controller
         }
     }
 
-    function addpost($data = array())
+    function addpost()
     {
-        $res  = $this->m_adminuser->add($data);
-        if($res)
+        $postData = $this->input->post();
+        if($postData)
         {
-            alert('添加成功','jump','/adminuser/');
-        }else{
-            alert('添加失败');
+            $data = array(
+                'username' => $postData['username'],
+                'password' => $postData['password'],
+                'createdOn' => time(),
+                'role' => 1,
+            );
+            $res  = $this->m_adminuser->addadminuser($data);
+            if($res)
+            {
+                alert('添加成功','jump','/adminuser/');
+            }else{
+                alert('添加失败','jump','/adminuser/');
+            }
         }
-    }
-
-    function updatepost()
-    {
 
     }
+
 }
