@@ -86,7 +86,7 @@
             <li class="dropdown hidden-xs">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <span class="glyphicon glyphicon-user padding-right-small"
-                          style="position:relative;top: 3px;"></span> Jack Smith
+                          style="position:relative;top: 3px;"></span> <?php echo isset($_SESSION['adminUserName']) ? $_SESSION['adminUserName'] : ""; ?>
                     <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu">
