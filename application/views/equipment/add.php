@@ -1,12 +1,14 @@
-<form id="tab" action="/adminmenu/addpost" method="post">
+<form id="tab" action="/equipment/addpost" method="post">
     <div class="content">
         <div class="header">
-            <h1 class="page-title">add 套餐</h1>
+
+            <h1 class="page-title">add 设备</h1>
             <ul class="breadcrumb">
-                <li><a href="index.html">Home</a> </li>
-                <li><a href="users.html">套餐</a> </li>
+                <li><a href="/">Home</a> </li>
+                <li><a href="/equipment">设备</a> </li>
                 <li class="active">add</li>
             </ul>
+
         </div>
         <div class="main-content">
             <ul class="nav nav-tabs">
@@ -19,29 +21,25 @@
                         <div class="tab-pane active" id="home">
 
                             <div class="form-group">
-                                <label>菜单名称</label>
-                                <input name="menuName" type="text" value="" class="form-control">
+                                <label>设备名称</label>
+                                <input name="equipmentName" type="text" value="" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label>上级菜单</label>
-                                <select name="parentId" class="form-control">
-                                    <option value="0">一级菜单</option>
-                                    <?php foreach($root_menu as $rows): ?>
-                                    <option value="<?php echo $rows['id']; ?>"><?php echo $rows['menuName']; ?></option>
-                                    <?php endforeach;?>
-                                </select>
+                                <label>厂家</label>
+                                <input name="company" type="text" value="" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label>URL</label>
-                                <input name="URL" type="text" value="" class="form-control">
+                                <label>价格</label>
+                                <input name="Price" type="text" value="" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label>排序（数字）</label>
-                                <input name="sort" type="text" value="" class="form-control">
+                                <label>型号</label>
+                                <input name="model" type="text" value="" class="form-control">
                             </div>
+
                             <div class="form-group">
                                 <label>状态(启用 or 停用)</label>
-                                <input name="isshow" type="checkbox" value="1" checked>
+                                <input name="status" type="checkbox" value="1" checked>
                             </div>
 
                         </div>

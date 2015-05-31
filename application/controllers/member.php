@@ -11,12 +11,14 @@ class member extends MY_Controller
     function __construct()
     {
         parent :: __construct();
+        $this->load->model('m_packages');
     }
 
     function index()
     {
         $data['content_text'] = 'member/list';
         $data['show_menu'] = true;
+        $data['menu'] = 'include/menu';
         //$data['sourceList'] = $this->m_adminuser->getall();
 
         $this->load->view('template', $data);
@@ -29,6 +31,7 @@ class member extends MY_Controller
     {
         $data['content_text'] = 'member/edit';
         $data['show_menu'] = true;
+        $data['menu'] = $this->m_adminmenu->selectWhere();
         //$data['sourceList'] = $this->m_adminuser->getall();
 
         $this->load->view('template', $data);
@@ -41,7 +44,11 @@ class member extends MY_Controller
     {
         $data['content_text'] = 'member/registraion';
         $data['show_menu'] = true;
-        //$data['sourceList'] = $this->m_adminuser->getall();
+        $data['menu'] = $this->m_adminmenu->selectWhere();
+        $packagewhere = array(
+            'status' => true
+        );
+        $data['packages'] = $this->m_packages->getwhere($packagewhere);
 
         $this->load->view('template', $data);
     }
@@ -53,6 +60,7 @@ class member extends MY_Controller
     {
         $data['content_text'] = 'member/registraionlist';
         $data['show_menu'] = true;
+        $data['menu'] = $this->m_adminmenu->selectWhere();
         //$data['sourceList'] = $this->m_adminuser->getall();
 
         $this->load->view('template', $data);

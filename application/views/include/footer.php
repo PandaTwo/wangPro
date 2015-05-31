@@ -1,5 +1,4 @@
 <script src="/static/lib/bootstrap/js/bootstrap.js"></script>
-<script src="/static/lib/validator.js"></script>
 <script type="text/javascript">
     $("[rel=tooltip]").tooltip();
     $(function () {

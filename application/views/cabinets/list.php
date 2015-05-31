@@ -9,7 +9,7 @@
     <div class="main-content">
 
         <div class="btn-toolbar list-toolbar">
-            <a href="/packages/add" class="btn btn-primary"><i class="fa fa-plus"></i> 添加新套餐</a>
+            <a href="/cabinets/add" class="btn btn-primary"><i class="fa fa-plus"></i> 添加新机柜</a>
             <div class="btn-group">
             </div>
         </div>
@@ -17,32 +17,26 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>套餐名称</th>
-                <th>速率</th>
-                <th>价格</th>
-                <th>时长</th>
-                <th>状态</th>
-                <th>操作员</th>
+                <th>机柜编号</th>
+                <th>机柜地址</th>
+                <th>备注</th>
                 <th style="width: 3.5em;"></th>
             </tr>
             </thead>
             <tbody>
             <?php
-            foreach($packlist as $row):
+            foreach($sourceList as $row):
                 ?>
                 <tr>
                     <td>
                         <?php echo $row['id']; ?>
                     </td>
-                    <td><?php echo $row['PackagesName']; ?></td>
-                    <td><?php echo $row['Speed']; ?></td>
-                    <td><?php echo $row['Price']; ?></td>
-                    <td><?php echo $row['times']; ?></td>
-                    <td><?php echo $row['status']; ?></td>
-                    <td><?php echo $row['UpdateName']; ?></td>
+                    <td><?php echo $row['cabinetsNumber']; ?></td>
+                    <td><?php echo $row['address']; ?></td>
+                    <td><?php echo $row['remark']; ?></td>
                     <td>
                         <a href=""><i class="fa fa-pencil"></i></a>
-                        <a href="/packages/deletebyid?id=<?php echo $row['id']; ?>" onclick="return confirm('Are sure del this?');"  role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
+                        <a href="/equipment/deletebyid?id=<?php echo $row['id']; ?>" onclick="return confirm('Are sure del this?');"  role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
                     </td>
                 </tr>
             <?php endforeach; ?>

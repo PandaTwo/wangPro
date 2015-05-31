@@ -18,6 +18,7 @@ class adminuser extends MY_Controller
     {
         $data['content_text'] = 'adminuser/list';
         $data['show_menu'] = true;
+        $data['menu'] = $this->m_adminmenu->selectWhere();
         $data['sourceList'] = $this->m_adminuser->getall();
 
         $this->load->view('template', $data);
@@ -31,6 +32,7 @@ class adminuser extends MY_Controller
 
         $data['content_text'] = 'adminuser/edit';
         $data['show_menu'] = true;
+        $data['menu'] = $this->m_adminmenu->selectWhere();
         $data['model'] = $this->m_adminuser->getbyid($id);
 
         $this->load->view('template', $data);

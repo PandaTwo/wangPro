@@ -21,6 +21,7 @@ class Welcome extends MY_Controller {
 	{
         $data['content_text'] = 'welcome_message';
         $data['show_menu'] = true;
+        $data['menu'] = $this->m_adminmenu->selectWhere();
         $data['loginUser'] = $_SESSION['adminUserName'];
 
 		$this->load->view('template',$data);

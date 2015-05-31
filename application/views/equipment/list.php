@@ -9,7 +9,7 @@
     <div class="main-content">
 
         <div class="btn-toolbar list-toolbar">
-            <a href="/packages/add" class="btn btn-primary"><i class="fa fa-plus"></i> 添加新套餐</a>
+            <a href="/equipment/add" class="btn btn-primary"><i class="fa fa-plus"></i> 添加新设备</a>
             <div class="btn-group">
             </div>
         </div>
@@ -17,10 +17,10 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>套餐名称</th>
-                <th>速率</th>
+                <th>设备名称</th>
+                <th>厂家</th>
                 <th>价格</th>
-                <th>时长</th>
+                <th>型号</th>
                 <th>状态</th>
                 <th>操作员</th>
                 <th style="width: 3.5em;"></th>
@@ -28,21 +28,21 @@
             </thead>
             <tbody>
             <?php
-            foreach($packlist as $row):
+            foreach($sourceList as $row):
                 ?>
                 <tr>
                     <td>
                         <?php echo $row['id']; ?>
                     </td>
-                    <td><?php echo $row['PackagesName']; ?></td>
-                    <td><?php echo $row['Speed']; ?></td>
-                    <td><?php echo $row['Price']; ?></td>
-                    <td><?php echo $row['times']; ?></td>
+                    <td><?php echo $row['equipmentName']; ?></td>
+                    <td><?php echo $row['company']; ?></td>
+                    <td><?php echo $row['price']; ?></td>
+                    <td><?php echo $row['model']; ?></td>
                     <td><?php echo $row['status']; ?></td>
-                    <td><?php echo $row['UpdateName']; ?></td>
+                    <td><?php echo $row['updateName']; ?></td>
                     <td>
                         <a href=""><i class="fa fa-pencil"></i></a>
-                        <a href="/packages/deletebyid?id=<?php echo $row['id']; ?>" onclick="return confirm('Are sure del this?');"  role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
+                        <a href="/equipment/deletebyid?id=<?php echo $row['id']; ?>" onclick="return confirm('Are sure del this?');"  role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
                     </td>
                 </tr>
             <?php endforeach; ?>

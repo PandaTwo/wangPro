@@ -11,7 +11,7 @@ class MY_Controller extends CI_Controller
     function __construct()
     {
         parent :: __construct();
-
+        header("content-text:html/text;charset='utf-8'");
         $this->checklogin();
 
     }

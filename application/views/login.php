@@ -10,7 +10,7 @@
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" name="password" class="form-controlspan12 form-control" required>
+                    <input type="password" name="password" class="form-control span12 form-control" required>
                 </div>
                 <input type="submit" class="btn btn-primary pull-right" value="Sign In">
                 <div class="clearfix"></div>
@@ -18,6 +18,3 @@
         </div>
     </div>
 </div>
-<Script>
-    $('#form').validator();
-</Script>

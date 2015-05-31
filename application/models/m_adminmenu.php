@@ -28,11 +28,21 @@ class m_adminmenu extends CI_Model
         {
             $this->db->order_by('sort asc');
             $query = $this->db->get($this->table_name);
-            return $query->row_array();
+            return $query->result_array();
         }
+        $this->db->order_by('sort asc');
         $this->db->where($data);
         $query = $this->db->get($this->table_name);
-        return $query->row_array();
+        return $query->result_array();
+    }
+
+    function deletebyid($id)
+    {
+        $this->db->where('id',$id);
+
+        $res = $this->db->delete($this->table_name);
+
+        return $res ? true :false;
     }
 
     /*

@@ -1,3 +1,6 @@
+<?php
+    header('Content-Type: text/html; charset=utf-8');
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,6 +16,7 @@
     <script src="/static/lib/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="/static/lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
     <script src="/static/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+    <script src="/static/lib/validator.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function () {
             $(".knob").knob();

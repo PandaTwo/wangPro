@@ -20,6 +20,7 @@ class packages extends MY_Controller
     {
         $data['content_text'] = 'packages/list';
         $data['show_menu'] = true;
+        $data['menu'] = $this->m_adminmenu->selectWhere();
         $data['packlist'] = $this->m_packages->getall();
 
         $this->load->view('template', $data);
@@ -45,7 +46,7 @@ class packages extends MY_Controller
     {
         $data['content_text'] = 'packages/add';
         $data['show_menu'] = true;
-
+        $data['menu'] = $this->m_adminmenu->selectWhere();
 
         $this->load->view('template', $data);
     }
