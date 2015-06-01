@@ -48,7 +48,7 @@ class login extends CI_Controller
         }
         if(empty($password))
         {
-            alert('用户名或密码错误','jump','/');
+            alert('密码不能为空','jump','/');
         }
 
         $res = $this->m_adminuser->checkuserlogin($username,$password);
@@ -57,11 +57,10 @@ class login extends CI_Controller
             session_start();
             $_SESSION['authenticated'] = true;
             $_SESSION['adminUserName'] = $username;
-
             alert('','jump','/');
         }else
         {
-            alert('用户名或密码错误','jump','/login');
+            alert('用户名或密码错误','jump','/');
         }
 
     }

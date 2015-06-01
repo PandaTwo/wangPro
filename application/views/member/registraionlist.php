@@ -17,7 +17,7 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>套餐名称</th>
+                <th>登记日期</th>
                 <th>速率</th>
                 <th>价格</th>
                 <th>时长</th>

@@ -24,6 +24,8 @@ class Welcome extends MY_Controller {
         $data['menu'] = $this->m_adminmenu->selectWhere();
         $data['loginUser'] = $_SESSION['adminUserName'];
 
+        $data['sourceList'] = array();
+
 		$this->load->view('template',$data);
 	}
 }

@@ -32,6 +32,10 @@ class member extends MY_Controller
         $data['content_text'] = 'member/edit';
         $data['show_menu'] = true;
         $data['menu'] = $this->m_adminmenu->selectWhere();
+        $packagewhere = array(
+            'status' => true
+        );
+        $data['packages'] = $this->m_packages->getwhere($packagewhere);
         //$data['sourceList'] = $this->m_adminuser->getall();
 
         $this->load->view('template', $data);
@@ -51,6 +55,19 @@ class member extends MY_Controller
         $data['packages'] = $this->m_packages->getwhere($packagewhere);
 
         $this->load->view('template', $data);
+    }
+
+    /*
+     * 添加用户登录信息
+     * */
+    function addregistration()
+    {
+        $postData = $this->input->post();
+        if(!$postData) {
+            alert('参数错误','jump','/member/registraion');
+        }
+
+
     }
 
     /*

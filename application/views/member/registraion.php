@@ -21,18 +21,18 @@
 
                             <div class="form-group">
                                 <label>姓名</label>
-                                <input name="username" type="text" value="" class="form-control">
+                                <input name="username" type="text" value="" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>姓别</label>
-                                <select name="sex" class="form-control">
+                                <select name="sex" class="form-control" required>
                                     <option value="男">男</option>
                                     <option value="女">女</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>套餐</label>
-                                <select id="packageid" class="form-control">
+                                <select id="packageid" class="form-control" required>
                                     <?php foreach($packages as $rows): ?>
                                     <option value="<?php echo $rows['id']; ?>"><?php echo $rows['PackagesName']; ?></option>
                                     <?php endforeach;?>
@@ -40,11 +40,11 @@
                             </div>
                             <div class="form-group">
                                 <label>身份证号码</label>
-                                <input name="cardid" type="text" value="" class="form-control">
+                                <input name="cardid" type="text" value="" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>手机</label>
-                                <input name="phoneNumber" type="text" value="" class="form-control">
+                                <input name="phoneNumber" type="text" value="" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>邮箱</label>
@@ -52,7 +52,7 @@
                             </div>
                             <div class="form-group">
                                 <label>安装地址</label>
-                                <input name="address" type="text" value="" class="form-control">
+                                <input name="address" type="text" value="" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>身份证正面图片</label>
