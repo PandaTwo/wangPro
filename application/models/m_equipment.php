@@ -21,6 +21,13 @@ class m_equipment extends CI_Model
         return $query->result_array();
     }
 
+    function getallbywhere($where = array())
+    {
+        $this->db->where($where);
+        $query = $this->db->get($this->table_name);
+        return $query->result_array();
+    }
+
 
     function deleteequipment($id)
     {
