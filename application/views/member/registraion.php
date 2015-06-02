@@ -32,7 +32,7 @@
                             </div>
                             <div class="form-group">
                                 <label>套餐</label>
-                                <select id="packageid" class="form-control" required>
+                                <select id="packageid" name="packageid" class="form-control" required>
                                     <?php foreach($packages as $rows): ?>
                                     <option value="<?php echo $rows['id']; ?>"><?php echo $rows['PackagesName']; ?></option>
                                     <?php endforeach;?>

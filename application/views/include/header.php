@@ -1,6 +1,3 @@
-<?php
-    header('Content-Type: text/html; charset=utf-8');
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -102,3 +99,6 @@
     </div>
     <?php endif; ?>
 </div>
+<script type="text/javascript" charset="utf-8">
+
+</script>

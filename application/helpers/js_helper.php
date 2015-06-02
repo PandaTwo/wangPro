@@ -6,7 +6,7 @@
  * @param  $url  跳转url
  */
 function alert($tip = "", $type = "", $url = "") {
-    $js = "<script>";
+    $js = '<script type="text/javascript" charset="utf-8">';
     if ($tip)
         $js .= "alert('" . $tip . "');";
     switch ($type) {

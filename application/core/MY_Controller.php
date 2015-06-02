@@ -8,14 +8,14 @@
 
 class MY_Controller extends CI_Controller
 {
+    public $adminName = "";
     function __construct()
     {
         parent :: __construct();
-        header("content-text:html/text;charset='utf-8'");
+        header('Content-Type: text/html; charset=UTF-8');
         $this->checklogin();
 
     }
-
 
     /*
      * 验证用户是否登录
@@ -27,5 +27,6 @@ class MY_Controller extends CI_Controller
         {
             alert('','jump','/login/');
         }
+        $this->adminName = $_SESSION['adminUserName'];
     }
 }

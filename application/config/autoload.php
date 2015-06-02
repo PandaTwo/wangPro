@@ -64,7 +64,7 @@ $autoload['libraries'] = array();
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('js');
+$autoload['helper'] = array('js','rmb','fileupload');
 
 
 /*
