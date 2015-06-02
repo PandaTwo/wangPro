@@ -28,6 +28,7 @@
             <?php endforeach; ?>
             </tbody>
         </table>
+        <?php echo $html; ?>
         <?php
         $this->load->view('/include/content_footer.html');
         ?>

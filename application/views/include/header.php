@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>-->
     <link rel="stylesheet" type="text/css" href="/static/lib/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="/static/lib/font-awesome/css/font-awesome.css">
     <script src="/static/lib/jquery-1.11.1.min.js" type="text/javascript"></script>
@@ -21,6 +21,7 @@
     </script>
     <link rel="stylesheet" type="text/css" href="/static/stylesheets/theme.css">
     <link rel="stylesheet" type="text/css" href="/static/stylesheets/premium.css">
+    <link rel="stylesheet" type="text/css" href="/static/lib/pager.css">
 </head>
 <body class=" theme-blue">
 <!-- Demo page code -->

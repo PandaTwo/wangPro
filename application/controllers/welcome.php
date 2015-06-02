@@ -2,6 +2,12 @@
 
 class Welcome extends MY_Controller {
 
+    function __construct()
+    {
+        parent :: __construct();
+        $this->load->library('pager',array('instance'=>'p','perPage'=>'10'));
+
+    }
 	/**
 	 * Index Page for this controller.
 	 *
@@ -23,7 +29,8 @@ class Welcome extends MY_Controller {
         $data['show_menu'] = true;
         $data['menu'] = $this->m_adminmenu->selectWhere();
         $data['loginUser'] = $_SESSION['adminUserName'];
-
+        $this->pager->set_total(100);
+        $data['html'] =$this->pager->page_links();
         $data['sourceList'] = array();
 
 		$this->load->view('template',$data);
