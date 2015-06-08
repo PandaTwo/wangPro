@@ -162,7 +162,59 @@ class member extends MY_Controller
      * */
     function addregistraionmoney()
     {
+        $postData = $this->input->post();
 
+        $updateArray = array(
+            'id'=>$postData['id'],
+            'adsl_id'=>$postData['adsl_id'],
+            'adsl_pwd'=>$postData['adsl_pwd'],
+            'serviceSatus'=>$postData['serviceSatus'],
+            'packageid'=>$postData['packageid'],
+            'start_time'=>$postData['start_time'],
+            'end_time'=>$postData['end_time'],
+            'username'=>$postData['username'],
+            'sex'=>$postData['sex'],
+            'cardid'=>$postData['cardid'],
+            'phoneNumber'=>$postData['phoneNumber'],
+            'email'=>$postData['email'],
+            'equipmentid'=>$postData['equipmentid'],
+            'equipment_sn'=>$postData['equipment_sn'],
+            'address'=>$postData['address'],
+            'cabinetsid'=>$postData['cabinetsid'],
+        );
+
+        $res = $this->m_members->updateMemberById($updateArray);
+
+
+
+    }
+
+    /*
+     * 开户交费打印模板
+     * */
+    function regmoneytemp()
+    {
+        $this->load->view('member/regmoneytemp');
+    }
+
+    /*
+     * 续费打单
+     * */
+    function renewals()
+    {
+        $data['content_text'] = 'member/renewals';
+        $data['show_menu'] = true;
+        $data['menu'] = 'include/menu';
+
+        $this->load->view('template', $data);
+    }
+
+    /*
+     * 续费打单模板
+     * */
+    function renewalstemp()
+    {
+        $this->load->view('member/renewalstemp');
     }
 
 

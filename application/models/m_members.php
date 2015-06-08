@@ -56,4 +56,21 @@ class m_members extends CI_Model
 
         return $query->row_array();
     }
+
+    /*
+     * 更新
+     * */
+    function updateMemberById($data = array())
+    {
+        $id = intval($data['id']);
+
+        unset($data['id']);
+
+        $this->db->where('id', $id);
+        $res = $this->db->update($this->table_name, $data);
+
+
+        return $res ? true :false;
+
+    }
 }

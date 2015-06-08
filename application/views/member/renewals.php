@@ -116,22 +116,6 @@
                         <a href="/member/registraionlist" class="btn btn-primary"> 返回列表</a>
                         <button onclick='document.getElementById("tab").submit();' class="btn btn-primary"><i class="fa fa-save"></i> 保存并发送工单</button>
                     </div>
-                    <table class="table table-bordered table-striped">
-                        <tr>
-                            <td>
-                                <img src="/static/uploads/<?php echo $sourceModel['cardpic']; ?>" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="/static/uploads/<?php echo $sourceModel['cardpic1']; ?>" />
-                            </td>
-                        </tr>
-                    </table>
-                </form>
             </div>
         </div>
         <?php
