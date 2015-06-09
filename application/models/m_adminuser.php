@@ -70,7 +70,6 @@ class m_adminuser extends CI_Model
             )
         );
         $result = $this->db->get($this->table_name);
-        var_dump($result);
         if($result->num_rows() > 0)
         {
             return true;

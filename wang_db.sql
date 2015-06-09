@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50533
 File Encoding         : 65001
 
-Date: 2015-06-08 18:28:04
+Date: 2015-06-09 08:33:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,7 +27,7 @@ CREATE TABLE `adminmenu` (
   `sort` int(11) DEFAULT NULL COMMENT '排序',
   `isshow` bit(1) DEFAULT NULL COMMENT '是否显示',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of adminmenu
@@ -49,6 +49,7 @@ INSERT INTO `adminmenu` VALUES ('16', '收费记录', '8', '/payrecord', '1', '
 INSERT INTO `adminmenu` VALUES ('17', '公告管理', '3', '/news', '1', '');
 INSERT INTO `adminmenu` VALUES ('18', '用户登记', '1', '/member/registraion', '3', '');
 INSERT INTO `adminmenu` VALUES ('19', '登记列表', '1', '/member/registraionlist', '3', '');
+INSERT INTO `adminmenu` VALUES ('20', '会员列表', '1', '/member', '3', '');
 
 -- ----------------------------
 -- Table structure for adminuser
@@ -142,10 +143,28 @@ INSERT INTO `members` VALUES ('1', null, null, null, null, null, null, null, nul
 INSERT INTO `members` VALUES ('2', null, null, null, '7', null, null, null, null, 'test', '男', '112312345345345345345', '', '', '135190019001', '1234@qq.com', '地址很长长长长长长长！！！！', null, null, null, 'admin');
 INSERT INTO `members` VALUES ('3', null, null, null, '8', null, null, null, null, '熊猫', '男', '112312345345345345345', '', '', '132111112345', 'guanbiao@qq.com', '深圳市南山区高新科技园中区一路腾讯大厦', null, null, null, 'admin');
 INSERT INTO `members` VALUES ('4', null, null, null, '7', null, null, null, null, 'test', '男', '112312345345345345345', '2015-06-02140835.jpg', '2015-06-02140835.jpg', '132111112345', 'guanbiao@qq.com', '深圳市南山区高新科技园中区一路腾讯大厦', null, null, null, 'admin');
-INSERT INTO `members` VALUES ('5', null, null, null, '7', null, null, null, null, 'admin', '男', '112312345345345345345', '2015-06-02140940.jpg', '2015-06-02140940.jpg', '132111112345', 'guanbiao@qq.com', '深圳市南山区高新科技园中区一路腾讯大厦', null, null, null, 'admin');
+INSERT INTO `members` VALUES ('5', 'adsl_username', '123456789', '正常', '7', '1433692800', null, '1435593600', null, 'admin', '男', '112312345345345345345', '2015-06-02140940.jpg', '2015-06-02140940.jpg', '132111112345', 'guanbiao@qq.com', '深圳市南山区高新科技园中区一路腾讯大厦', '1', '', '1', 'admin');
 INSERT INTO `members` VALUES ('6', null, null, null, '7', null, null, null, null, '测试', '男', '112312345345345345345', '2015-06-02141329.jpg', '2015-06-02141329.jpg', '135190019001', 'guanbiao@qq.com', '深圳市南山区高新科技园中区一路腾讯大厦', null, null, null, 'admin');
 INSERT INTO `members` VALUES ('7', null, null, null, '7', null, null, null, null, 'admin', '男', '112312345345345345345', '2015-06-02143102.jpg', '', '132111112345', 'guanbiao@qq.com', '深圳市南山区高新科技园中区一路腾讯大厦', null, null, null, 'admin');
 INSERT INTO `members` VALUES ('8', null, null, null, '8', null, null, null, null, '林志玲', '女', '112312345345345345345', '2015-06-02174337-0.jpg', '2015-06-02174337-1.jpg', '132111112345', 'guanbiao@qq.com', '女神免费安装。', null, null, null, 'admin');
+
+-- ----------------------------
+-- Table structure for orders
+-- ----------------------------
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `orderid` varchar(20) DEFAULT NULL,
+  `userid` int(11) DEFAULT NULL,
+  `type` int(255) DEFAULT NULL,
+  `addTime` int(11) DEFAULT NULL,
+  `updateName` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of orders
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for packages

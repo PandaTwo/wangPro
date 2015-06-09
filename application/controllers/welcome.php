@@ -6,7 +6,7 @@ class Welcome extends MY_Controller {
     {
         parent :: __construct();
         $this->load->library('pager',array('instance'=>'p','perPage'=>'10'));
-
+        $this->load->model('m_members');
     }
 	/**
 	 * Index Page for this controller.
@@ -31,7 +31,7 @@ class Welcome extends MY_Controller {
         $data['loginUser'] = $_SESSION['adminUserName'];
         $this->pager->set_total(100);
         $data['html'] =$this->pager->page_links();
-        $data['sourceList'] = array();
+        $data['sourceList'] = $this->m_members->getNewmembers();
 
 		$this->load->view('template',$data);
 	}

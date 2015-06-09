@@ -22,8 +22,8 @@
                     <td><?php echo $row['id']; ?></td>
                     <td><?php echo $row['adsl_id']; ?></td>
                     <td><?php echo $row['username']; ?></td>
-                    <td><?php echo $row['packageid']; ?></td>
-                    <td><?php echo $row['start_time']; ?></td>
+                    <td><?php echo $row['pName']; ?></td>
+                    <td><?php echo date('Y-m-d H:i:s',$row['start_time'])  ?></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

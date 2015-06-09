@@ -13,10 +13,57 @@ class m_members extends CI_Model
 
     public $packages_table_name = 'packages';
 
+    public $cabinets_table_name = 'cabinets';
+
+    public $equipment_table_name = 'equipment';
+
     function __construct()
     {
         parent :: __construct();
         $this->load->database();
+    }
+
+    function getallmembers($pageIndex,$pageSize)
+    {
+
+        $this->db->select('m.*,p.PackagesName as pName,e.equipmentName as eName,c.cabinetsNumber as cNumber');
+        $this->db->from($this->table_name.' as m');
+        $this->db->join($this->packages_table_name.' p', 'm.packageid = p.id', 'left');
+        $this->db->join($this->cabinets_table_name.' c', 'm.cabinetsid = c.id', 'left');
+        $this->db->join($this->equipment_table_name.' e', 'm.equipmentid = e.id', 'left');
+        $this->db->where(array('m.serviceSatus'=>'正常'));
+
+        $data['count'] =  $this->db->count_all_results();
+
+        $this->db->select('m.*,p.PackagesName as pName,e.equipmentName as eName,c.cabinetsNumber as cNumber');
+        $this->db->from($this->table_name.' as m');
+        $this->db->join($this->packages_table_name.' p', 'm.packageid = p.id', 'left');
+        $this->db->join($this->cabinets_table_name.' c', 'm.cabinetsid = c.id', 'left');
+        $this->db->join($this->equipment_table_name.' e', 'm.equipmentid = e.id', 'left');
+        $this->db->where(array('m.serviceSatus'=>'正常'));
+
+
+        $this->db->limit($pageSize,($pageIndex-1) * $pageSize);
+
+
+
+        $query = $this->db->get();
+        $data['objlist'] = $query->result_array();
+
+        return $data;
+    }
+
+    function getNewmembers()
+    {
+        $this->db->select('m.*,p.PackagesName as pName');
+        $this->db->from($this->table_name.' as m');
+        $this->db->join($this->packages_table_name.' p', 'm.packageid = p.id', 'left');
+        $this->db->limit(10);
+        $this->db->where(array('m.serviceSatus'=>'正常'));
+
+        $query = $this->db->get();
+
+        return $query->result_array();
     }
 
     /*

@@ -20,10 +20,14 @@ class member extends MY_Controller
 
     function index()
     {
+
+        $pageIndex = 1;
+        $pageSize = 10;
+
         $data['content_text'] = 'member/list';
         $data['show_menu'] = true;
-        $data['menu'] = 'include/menu';
-        //$data['sourceList'] = $this->m_adminuser->getall();
+        $data['menu'] = $this->m_adminmenu->selectWhere();
+        $data['sourceList'] = $this->m_members->getallmembers($pageIndex,$pageSize);
 
         $this->load->view('template', $data);
     }
@@ -170,8 +174,8 @@ class member extends MY_Controller
             'adsl_pwd'=>$postData['adsl_pwd'],
             'serviceSatus'=>$postData['serviceSatus'],
             'packageid'=>$postData['packageid'],
-            'start_time'=>$postData['start_time'],
-            'end_time'=>$postData['end_time'],
+            'start_time'=>strtotime($postData['start_time']),
+            'end_time'=>strtotime($postData['end_time']),
             'username'=>$postData['username'],
             'sex'=>$postData['sex'],
             'cardid'=>$postData['cardid'],
@@ -185,16 +189,37 @@ class member extends MY_Controller
 
         $res = $this->m_members->updateMemberById($updateArray);
 
+        if($res) {
+            //获取开户交费模板内容
+            $package = $this->m_packages->getwhere(array('id' => $postData['packageid']));
+            if ($package)
+            {
+                $postData['packagesName'] = $package[0]['PackagesName'];
+                $postData['amount'] = $package[0]['Price'];
+                $postData['amountcn'] =rmb_format(intval($package[0]['Price']));
+                $postData['orderid'] = $this->getorderNumber();
+                $this->regmoneytemp($postData);
 
+            }
+        }
+        else{
+            alert('开户失败，请重新操作.','jump','/member/registraionlist');
+        }
 
+    }
+
+    function getorderNumber()
+    {
+        return date('YmdHis');
     }
 
     /*
      * 开户交费打印模板
      * */
-    function regmoneytemp()
+    function regmoneytemp($dataarr = array())
     {
-        $this->load->view('member/regmoneytemp');
+        $data['data'] = $dataarr;
+        $this->load->view('member/regmoneytemp',$data);
     }
 
     /*

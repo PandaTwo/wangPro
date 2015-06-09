@@ -74,13 +74,7 @@
 <!--<![endif]-->
 <div class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="" href="index.html"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> Aircraft</span></a>
+        <a href="/" style="width: 350px;height: 80px;"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> 宽带管理系统</span></a>
     </div>
 
     <?php if(isset($_SESSION['adminUserName'])):?>
