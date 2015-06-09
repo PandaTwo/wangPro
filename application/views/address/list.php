@@ -1,10 +1,6 @@
 <div class="content">
     <div class="header">
         <h1 class="page-title">地址列表</h1>
-        <ul class="breadcrumb">
-            <li><a href="/">Home</a> </li>
-            <li class="active">地址列表</li>
-        </ul>
     </div>
     <div class="main-content">
 

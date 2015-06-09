@@ -227,11 +227,26 @@ class member extends MY_Controller
      * */
     function renewals()
     {
+        $id = $this->input->get('id');
+
         $data['content_text'] = 'member/renewals';
         $data['show_menu'] = true;
-        $data['menu'] = 'include/menu';
+        $data['menu'] = $this->m_adminmenu->selectWhere();
+        //套餐
+        $packagewhere = array(
+            'status' => true
+        );
+        $data['packages'] = $this->m_packages->getwhere($packagewhere);
+        $data['sourceModel'] = $this->m_members->getMemberByid($id);
 
         $this->load->view('template', $data);
+    }
+
+    function postrenewals()
+    {
+        $postData = $this->input->post();
+
+
     }
 
     /*

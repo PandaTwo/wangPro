@@ -1,14 +1,6 @@
-
     <div class="content">
         <div class="header">
-
             <h1 class="page-title">开户登记</h1>
-            <ul class="breadcrumb">
-                <li><a href="/">Home</a> </li>
-                <li><a href="/registraion">开户登记</a> </li>
-                <li class="active">add</li>
-            </ul>
-
         </div>
         <div class="main-content">
 

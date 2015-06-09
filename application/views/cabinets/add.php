@@ -1,14 +1,7 @@
 <form id="tab" action="/cabinets/addpost" method="post">
     <div class="content">
         <div class="header">
-
-            <h1 class="page-title">add 机柜</h1>
-            <ul class="breadcrumb">
-                <li><a href="/">Home</a> </li>
-                <li><a href="/cabinets">机柜</a> </li>
-                <li class="active">add</li>
-            </ul>
-
+            <h1 class="page-title">机柜添加</h1>
         </div>
         <div class="main-content">
             <ul class="nav nav-tabs">

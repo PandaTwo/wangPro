@@ -1,17 +1,9 @@
 
 <div class="content">
     <div class="header">
-
-        <h1 class="page-title">开户交费</h1>
-        <ul class="breadcrumb">
-            <li><a href="/">Home</a> </li>
-            <li><a href="/member/registrationMoeny">开户交费</a> </li>
-            <li class="active">add</li>
-        </ul>
-
+        <h1 class="page-title">续费打单</h1>
     </div>
     <div class="main-content">
-
         <div class="row">
             <div class="col-md-8">
                 <br>
@@ -22,12 +14,12 @@
                         <tr>
                             <td>账户</td>
                             <td>
-                                <input type="text" value="" name="adsl_id" class="form-control" >
+                                <input type="text" value="<?php echo $sourceModel['adsl_id']; ?>" name="adsl_id"  class="form-control" >
                             </td>
                         </tr>
                         <tr>
                             <td>密码</td>
-                            <td><input type="text" value="" name="adsl_pwd" class="form-control" ></td>
+                            <td><input type="text" value="<?php echo $sourceModel['adsl_pwd']; ?>" name="adsl_pwd" class="form-control" ></td>
                         </tr>
                         <tr>
                             <td>服务状态</td>
@@ -39,23 +31,14 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td>套餐</td>
-                            <td>
-                                <select id="packageid" name="packageid" class="form-control" required>
-                                    <?php foreach($packages as $rows): ?>
-                                        <option value="<?php echo $rows['id']; ?>"><?php echo $rows['PackagesName']; ?></option>
-                                    <?php endforeach;?>
-                                </select>
-                            </td>
-                        </tr>
+
                         <tr>
                             <td>开户日期</td>
-                            <td><input type="text" value="" name="start_time" class="form-control" style="width: 150px" onFocus="WdatePicker({isShowClear:true,dateFmt:'yyyy-MM-dd'})" ></td>
+                            <td><input type="text" value="<?php echo date('Y-m-d H:i:s',$sourceModel['start_time']); ?>" name="start_time" class="form-control" style="width: 150px" onFocus="WdatePicker({isShowClear:true,dateFmt:'yyyy-MM-dd'})" ></td>
                         </tr>
                         <tr>
                             <td>结束日期</td>
-                            <td><input type="text" value="" name="end_time" class="form-control" style="width: 150px" onFocus="WdatePicker({isShowClear:true,dateFmt:'yyyy-MM-dd'})" ></td>
+                            <td><input type="text" value="<?php echo date('Y-m-d H:i:s',$sourceModel['end_time']); ?>" name="end_time" class="form-control" style="width: 150px" onFocus="WdatePicker({isShowClear:true,dateFmt:'yyyy-MM-dd'})" ></td>
                         </tr>
                         <tr>
                             <td>姓名</td>
@@ -83,38 +66,38 @@
                             <td><input type="text" value="<?php echo $sourceModel['email']; ?>" name="email" class="form-control" ></td>
                         </tr>
                         <tr>
-                            <td>设备名称</td>
+                            <td>安装地址</td>
+                            <td><input type="text" value="<?php echo $sourceModel['address']; ?>" name="address" class="form-control" ></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td>续费套餐</td>
                             <td>
-                                <select id="equipmentid" name="equipmentid" class="form-control" required>
-                                    <?php foreach($equipments as $rows): ?>
-                                        <option value="<?php echo $rows['id']; ?>"><?php echo $rows['equipmentName']; ?></option>
+                                <select id="packageid" name="packageid" class="form-control" required>
+                                    <?php foreach($packages as $rows): ?>
+                                        <option value="<?php echo $rows['id']; ?>" price="<?php echo $rows['Price']; ?>"><?php echo $rows['PackagesName']; ?></option>
                                     <?php endforeach;?>
                                 </select>
                             </td>
                         </tr>
                         <tr>
-                            <td>设备序号</td>
-                            <td><input type="text" value="<?php echo $sourceModel['equipment_sn']; ?>" name="equipment_sn" class="form-control" ></td>
-                        </tr>
-                        <tr>
-                            <td>安装地址</td>
-                            <td><input type="text" value="<?php echo $sourceModel['address']; ?>" name="address" class="form-control" ></td>
-                        </tr>
-                        <tr>
-                            <td>机柜</td>
+                            <td>套餐价格</td>
                             <td>
-                                <select id="cabinetsid" name="cabinetsid" class="form-control" required>
-                                    <?php foreach($cabinets as $rows): ?>
-                                        <option value="<?php echo $rows['id']; ?>"><?php echo $rows['cabinetsNumber']; ?></option>
-                                    <?php endforeach;?>
-                                </select>
+                            <span id="span_price"><?php echo $packages[0]['Price'] ?></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>续至日期</td>
+                            <td>
+                            <input type="text" value="" name="end_time1" class="form-control" style="width: 150px" onFocus="WdatePicker({isShowClear:true,dateFmt:'yyyy-MM-dd'})" >
                             </td>
                         </tr>
                         </tbody>
                     </table>
                     <div class="btn-toolbar list-toolbar">
-                        <a href="/member/registraionlist" class="btn btn-primary"> 返回列表</a>
-                        <button onclick='document.getElementById("tab").submit();' class="btn btn-primary"><i class="fa fa-save"></i> 保存并发送工单</button>
+                        <button onclick='document.getElementById("tab").submit();' class="btn btn-primary"><i class="fa fa-save"></i> 确认续费并打印</button>
                     </div>
             </div>
         </div>
@@ -125,4 +108,11 @@
 </div>
 <script>
     $('#tab').validator();
+
+    $(function(){
+        $("#packageid").change(function(){
+            var option = $('option:selected', this).attr('Price');
+           $("#span_price").html(option) ;
+        });
+    })
 </script>

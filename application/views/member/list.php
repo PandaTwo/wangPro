@@ -1,10 +1,6 @@
 <div class="content">
     <div class="header">
-        <h1 class="page-title">Users</h1>
-        <ul class="breadcrumb">
-            <li><a href="index.html">Home</a> </li>
-            <li class="active">Users</li>
-        </ul>
+        <h1 class="page-title">会员列表</h1>
     </div>
     <div class="main-content">
 
@@ -61,8 +57,15 @@
                     <td><?php echo $row['cNumber']; ?></td>
                     <td><?php echo $row['updateName']; ?></td>
                     <td>
-                        <a href=""><i class="fa fa-pencil"></i></a>
-                        <a href="/packages/deletebyid?id=<?php echo $row['id']; ?>" onclick="return confirm('Are sure del this?');"  role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
+                        <select onchange="javascript:location.href=this.value;">
+                            <option value="/member/edit?id=<?php echo $row['id']; ?>">修改资料</option>
+                            <option value="/member/edit?id=<?php echo $row['id']; ?>">查看身份证</option>
+                            <option >删除会员</option>
+                            <option>带宽到期</option>
+                            <option value="/member/renewals?id=<?php echo $row['id']; ?>">带宽续费</option>
+                            <option>发送短信</option>
+                            <option>查看留言</option>
+                        </select>
                     </td>
                 </tr>
             <?php endforeach; ?>

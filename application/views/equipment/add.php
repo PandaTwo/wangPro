@@ -1,14 +1,7 @@
 <form id="tab" action="/equipment/addpost" method="post">
     <div class="content">
         <div class="header">
-
-            <h1 class="page-title">add 设备</h1>
-            <ul class="breadcrumb">
-                <li><a href="/">Home</a> </li>
-                <li><a href="/equipment">设备</a> </li>
-                <li class="active">add</li>
-            </ul>
-
+            <h1 class="page-title">添加设备</h1>
         </div>
         <div class="main-content">
             <ul class="nav nav-tabs">

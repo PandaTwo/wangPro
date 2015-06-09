@@ -1,12 +1,7 @@
 <form id="tab" action="/adminmenu/addpost" method="post">
     <div class="content">
         <div class="header">
-            <h1 class="page-title">add 套餐</h1>
-            <ul class="breadcrumb">
-                <li><a href="index.html">Home</a> </li>
-                <li><a href="users.html">套餐</a> </li>
-                <li class="active">add</li>
-            </ul>
+            <h1 class="page-title">添加菜单</h1>
         </div>
         <div class="main-content">
             <ul class="nav nav-tabs">

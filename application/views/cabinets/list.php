@@ -1,13 +1,8 @@
 <div class="content">
     <div class="header">
-        <h1 class="page-title">Users</h1>
-        <ul class="breadcrumb">
-            <li><a href="index.html">Home</a> </li>
-            <li class="active">Users</li>
-        </ul>
+        <h1 class="page-title">机柜列表</h1>
     </div>
     <div class="main-content">
-
         <div class="btn-toolbar list-toolbar">
             <a href="/cabinets/add" class="btn btn-primary"><i class="fa fa-plus"></i> 添加新机柜</a>
             <div class="btn-group">

@@ -1,10 +1,6 @@
 <div class="content">
     <div class="header">
         <h1 class="page-title">系统设置</h1>
-        <ul class="breadcrumb">
-            <li><a href="/">Home</a> </li>
-            <li class="active">系统设置</li>
-        </ul>
     </div>
     <div class="main-content">
 

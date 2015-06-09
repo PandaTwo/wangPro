@@ -1,14 +1,7 @@
 
 <div class="content">
     <div class="header">
-
         <h1 class="page-title">开户交费</h1>
-        <ul class="breadcrumb">
-            <li><a href="/">Home</a> </li>
-            <li><a href="/member/registrationMoeny">开户交费</a> </li>
-            <li class="active">add</li>
-        </ul>
-
     </div>
     <div class="main-content">
 

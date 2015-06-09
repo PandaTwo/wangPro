@@ -1,10 +1,6 @@
 <div class="content">
     <div class="header">
         <h1 class="page-title">用户登记</h1>
-        <ul class="breadcrumb">
-            <li><a href="/">Home</a> </li>
-            <li class="active">用户登记</li>
-        </ul>
     </div>
     <div class="main-content">
 

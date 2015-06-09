@@ -2,10 +2,6 @@
 <div class="content">
     <div class="header">
         <h1 class="page-title">收费记录</h1>
-        <ul class="breadcrumb">
-            <li><a href="/">Home</a> </li>
-            <li class="active">收费记录</li>
-        </ul>
     </div>
     <div class="main-content">
 
