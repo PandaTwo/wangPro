@@ -31,8 +31,8 @@
                     <td><?php echo $row['password']; ?></td>
                     <td><?php echo $row['createdOn']; ?></td>
                     <td>
-                        <a href=""><i class="fa fa-pencil"></i></a>
-                        <a href="/adminuser/edit?id=<?php echo $row['id']; ?>" onclick="return confirm('Are sure del this?');"  role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
+                        <a href="/adminuser/edit?id=<?php echo $row['id']; ?>"><i class="fa fa-pencil"></i></a>
+                        <a href="/adminuser/deletebyid?id=<?php echo $row['id']; ?>" onclick="return confirm('Are sure del this?');"  role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
                     </td>
                 </tr>
             <?php endforeach; ?>

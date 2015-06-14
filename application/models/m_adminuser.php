@@ -16,6 +16,16 @@ class m_adminuser extends CI_Model
         $this->load->database();
     }
 
+
+    function existadminuser($id,$oldpassword)
+    {
+        $this->db->where('id',$id);
+        $this->db->where('password',$oldpassword);
+        $query = $this->db->get($this->table_name);
+
+        return count($query->result());
+    }
+
     function getall()
     {
         $this->db->order_by('id desc');
@@ -25,7 +35,8 @@ class m_adminuser extends CI_Model
 
     function updateadminuser($id,$data = array())
     {
-        if($data) return false;
+        if(!$data) return false;
+
         $this->db->where('id',$id);
         $res = $this->db->update($this->table_name,$data);
         return $res ? true : false;

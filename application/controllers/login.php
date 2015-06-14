@@ -11,7 +11,7 @@ class login extends CI_Controller
     function __construct()
     {
         parent :: __construct();
-
+        header('Content-Type: text/html; charset=UTF-8');
         $this->load->model('m_adminuser');
     }
 

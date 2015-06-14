@@ -3,12 +3,16 @@
         <h1 class="page-title">会员列表</h1>
     </div>
     <div class="main-content">
-
+        <form action="/member/" method="get">
         <div class="btn-toolbar list-toolbar">
-            <a href="/packages/add" class="btn btn-primary"><i class="fa fa-plus"></i> 添加新套餐</a>
+            <span>
+                关键字:<input name="searchKeywords" style="width: 500px;" value="<?php echo isset($_REQUEST['searchKeywords']) ? $_REQUEST['searchKeywords'] : ''; ?>" type="text" >
+            </span>
+            <input  class="btn btn-primary" type="submit" value="搜索">
             <div class="btn-group">
             </div>
         </div>
+        </form>
         <table class="table">
             <thead>
             <tr>
@@ -44,9 +48,9 @@
                     <td><?php echo $row['adsl_pwd']; ?></td>
                     <td><?php echo $row['serviceSatus']; ?></td>
                     <td><?php echo $row['pName']; ?></td>
-                    <td><?php echo $row['start_time']; ?></td>
+                    <td><?php echo date('Y-m-d',intval($row['start_time'])); ?></td>
                     <td><?php echo $row['up_time']; ?></td>
-                    <td><?php echo $row['end_time']; ?></td>
+                    <td><?php echo date('Y-m-d',intval($row['end_time'])); ?></td>
                     <td><?php echo $row['username']; ?></td>
                     <td><?php echo $row['sex']; ?></td>
                     <td><?php echo $row['cardid']; ?></td>
@@ -58,20 +62,21 @@
                     <td><?php echo $row['updateName']; ?></td>
                     <td>
                         <select onchange="javascript:location.href=this.value;">
+                            <option value="#">==请选择操作==</option>
                             <option value="/member/edit?id=<?php echo $row['id']; ?>">修改资料</option>
-                            <option value="/member/edit?id=<?php echo $row['id']; ?>">查看身份证</option>
-                            <option >删除会员</option>
-                            <option>带宽到期</option>
+                            <option value="/member/deletebyid?id=<?php echo $row['id']; ?>">删除会员</option>
+                            <option value="#">带宽到期</option>
                             <option value="/member/renewals?id=<?php echo $row['id']; ?>">带宽续费</option>
-                            <option>发送短信</option>
-                            <option>查看留言</option>
+                            <option value="#">发送短信</option>
+                            <option value="#">查看留言</option>
                         </select>
                     </td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
         </table>
-
+        <div style="clear: both;"></div>
+        <?php echo $html; ?>
         <?php
         $this->load->view('include/content_footer.html');
         ?>

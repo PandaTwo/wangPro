@@ -15,10 +15,27 @@ class m_setting extends CI_Model
         $this->load->database();
     }
 
+    function updateModel($id,$data=array())
+    {
+        $this->db->where('id', $id);
+        $res = $this->db->update($this->table_name, $data);
+
+        return $res ? true : false;
+    }
+
     function getAll()
     {
         $query = $this->db->get($this->table_name);
         return $query->result_array();
+    }
+
+    function getModel($id)
+    {
+        $this->db->where(array('id'=>$id));
+
+        $query = $this->db->get($this->table_name);
+
+        return $query->row_array();
     }
 
 

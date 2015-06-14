@@ -15,6 +15,51 @@ class cabinets extends MY_Controller
 
     }
 
+    function edit()
+    {
+        $id = $this->input->get('id');
+
+        $data['content_text'] = 'cabinets/edit';
+        $data['show_menu'] = true;
+        $data['menu'] = $this->m_adminmenu->selectWhere();
+        $data['updateModel'] = $this->m_cabinets->getModel($id);
+
+        $this->load->view('template', $data);
+    }
+
+    function updatePost()
+    {
+        $postdata = $this->input->post();
+
+        $id = $postdata['id'];
+        $data = array(
+            'cabinetsNumber' => $postdata['cabinetsNumber'],
+            'address' => $postdata['address'],
+            'remark' => $postdata['remark']
+        );
+
+        $res = $this->m_cabinets->updateModel($id,$data);
+        if ($res) {
+            alert('修改成功', 'jump', '/cabinets/');
+        } else {
+            alert('修改失败', 'jump', '/cabinets/');
+        }
+    }
+
+    function deletebyid()
+    {
+        $id = $this->input->get('id');
+        if (!$id) {
+            alert('参数错误','jump', '/cabinets/');
+        }
+        $res = $this->m_cabinets->deletecabinets($id);
+        if ($res) {
+            alert('删除成功', 'jump', '/cabinets/');
+        } else {
+            alert('删除失败','jump', '/cabinets/');
+        }
+    }
+
     function index()
     {
         $data['content_text'] = 'cabinets/list';
@@ -40,7 +85,7 @@ class cabinets extends MY_Controller
         $data = array(
             'cabinetsNumber' => $postdata['cabinetsNumber'],
             'address' => $postdata['address'],
-            'remark' => floatval($postdata['remark'])
+            'remark' => $postdata['remark']
         );
         $res = $this->m_cabinets->addcabinets($data);
 

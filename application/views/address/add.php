@@ -1,7 +1,7 @@
-<form id="tab" action="/equipment/addpost" method="post">
+<form id="tab" action="/address/addpost" method="post">
     <div class="content">
         <div class="header">
-            <h1 class="page-title">添加设备</h1>
+            <h1 class="page-title">添加地址</h1>
         </div>
         <div class="main-content">
             <ul class="nav nav-tabs">
@@ -12,29 +12,19 @@
                     <br>
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane active" id="home">
-
+                            <input type="hidden" name="class_type" value="<?php echo $model['class_type']; ?>">
                             <div class="form-group">
-                                <label>设备名称</label>
-                                <input name="equipmentName" type="text" value="" class="form-control">
+                                <label>上级城市名称：</label>
+                                <?php echo $model['class_name']; ?>  ----------------  层级为:<?php echo $model['class_type']; ?>
                             </div>
                             <div class="form-group">
-                                <label>厂家</label>
-                                <input name="company" type="text" value="" class="form-control">
+                                <label>城市街道名称</label>
+                                <input name="class_name" type="text" value="" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label>价格</label>
-                                <input name="price" type="text" value="" class="form-control">
+                                <label>父id(请不要修改)</label>
+                                <input name="class_parent_id"  type="text" value="<?php echo $model['class_id']; ?>" class="form-control">
                             </div>
-                            <div class="form-group">
-                                <label>型号</label>
-                                <input name="model" type="text" value="" class="form-control">
-                            </div>
-
-                            <div class="form-group">
-                                <label>状态(启用 or 停用)</label>
-                                <input name="status" type="checkbox" value="1" checked>
-                            </div>
-
                         </div>
 
                     </div>

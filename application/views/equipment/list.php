@@ -34,10 +34,10 @@
                     <td><?php echo $row['company']; ?></td>
                     <td><?php echo $row['price']; ?></td>
                     <td><?php echo $row['model']; ?></td>
-                    <td><?php echo $row['status']; ?></td>
+                    <td><?php echo $row['status']=="1" ? '启用' : '停用' ?></td>
                     <td><?php echo $row['updateName']; ?></td>
                     <td>
-                        <a href=""><i class="fa fa-pencil"></i></a>
+                        <a href="/equipment/edit?id=<?php echo $row['id']; ?>"><i class="fa fa-pencil"></i></a>
                         <a href="/equipment/deletebyid?id=<?php echo $row['id']; ?>" onclick="return confirm('Are sure del this?');"  role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
                     </td>
                 </tr>
