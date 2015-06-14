@@ -3,20 +3,11 @@
     <div class="header">
         <h1 class="page-title">续费打单</h1>
     </div>
-    <form action="/member/searchrenewals" method="get">
-    <div class="btn-toolbar list-toolbar">
-        <span>姓名：<input type="text" name="username" value="<?php echo isset($_REQUEST['username']) ? $_REQUEST['username'] :''  ?>"> </span>
-        <span>手机号码：<input type="text" name="phoneNumber" value="<?php echo isset($_REQUEST['phoneNumber']) ? $_REQUEST['phoneNumber'] :''  ?>"></span>
-        <input type="submit"  class="btn btn-primary" value="搜索">
-        <div class="btn-group">
-        </div>
-    </div>
-    </form>
     <div class="main-content">
         <div class="row">
             <div class="col-md-8">
                 <br>
-                <form id="tab" action="/member/postrenewals" enctype="multipart/form-data"  method="post">
+                <form id="tab" action="/member/addregistraionmoney" enctype="multipart/form-data"  method="post">
                     <input type="hidden" name="id" value="<?php echo $sourceModel['id']; ?>">
                     <table class="table table-bordered table-striped">
                         <tbody>

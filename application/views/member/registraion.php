@@ -44,18 +44,6 @@
                             </div>
                             <div class="form-group">
                                 <label>安装地址</label>
-                                <select id="sheng">
-                                    <option value="0">==请选择==</option>
-                                    <?php foreach($firststepaddress as $row): ?>
-                                        <option value="<?php echo $row['class_id'] ?>"><?php echo $row['class_name'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                                <select id="shi" name="shi">
-                                    <option>==请选择==</option>
-                                </select>
-                                <select id="xian" name="xian">
-                                    <option>==请选择==</option>
-                                </select>
                                 <input name="address" type="text" value="" class="form-control" required>
                             </div>
                             <div class="form-group">
@@ -81,54 +69,4 @@
     </div>
 <script>
     $('#tab').validator();
-    $(function(){
-        $('#sheng').on('change', function() {
-            var class_id = this.value;
-            if(class_id == 0)
-            {
-                $("#shi").html("").html("<option>==请选择==</option>");
-                $("#xian").html("").html("<option>==请选择==</option>");
-
-            }else{
-            //ajaxgetlistbyclassid
-            $.ajax({
-                type:"GET",
-                url: "/address/ajaxgetlistbyclassid?id="+class_id,
-                success: function(data){
-                    data = eval(data);
-                    $("#shi").html("");
-                    var optionstr = "";
-                    if(data.length <=1)
-                    {
-                        optionstr = "<option>==请选择==</option>";
-                    }
-                    $.each(data, function(i, item) {
-                        optionstr+="<option value='"+item.class_id+"'>"+item.class_name+"</option>";
-                    });
-                    $("#shi").append(optionstr);
-                }
-            });
-            }
-        });
-        $('#shi').on('change', function() {
-            var class_id = this.value;
-            $.ajax({
-                type:"GET",
-                url: "/address/ajaxgetlistbyclassid?id="+class_id,
-                success: function(data){
-                    data = eval(data);
-                    $("#xian").html("");
-                    var optionstr = "";
-                    if(data.length <=1)
-                    {
-                        optionstr = "<option>==请选择==</option>";
-                    }
-                    $.each(data, function(i, item) {
-                        optionstr+="<option value='"+item.class_id+"'>"+item.class_name+"</option>";
-                    });
-                    $("#xian").append(optionstr);
-                }
-            });
-        });
-    })
 </script>

@@ -30,8 +30,8 @@
                     <td><?php echo $row['address']; ?></td>
                     <td><?php echo $row['remark']; ?></td>
                     <td>
-                        <a href="/cabinets/edit?id=<?php echo $row['id']; ?>"><i class="fa fa-pencil"></i></a>
-                        <a href="/cabinets/deletebyid?id=<?php echo $row['id']; ?>" onclick="return confirm('Are sure del this?');"  role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
+                        <a href=""><i class="fa fa-pencil"></i></a>
+                        <a href="/equipment/deletebyid?id=<?php echo $row['id']; ?>" onclick="return confirm('Are sure del this?');"  role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
                     </td>
                 </tr>
             <?php endforeach; ?>

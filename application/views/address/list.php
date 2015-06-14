@@ -3,32 +3,34 @@
         <h1 class="page-title">地址列表</h1>
     </div>
     <div class="main-content">
+
+        <div class="btn-toolbar list-toolbar">
+            <a href="/cabinets/add" class="btn btn-primary"><i class="fa fa-plus"></i> 添加新机柜</a>
+            <div class="btn-group">
+            </div>
+        </div>
         <table class="table">
             <thead>
             <tr>
                 <th>#</th>
-                <th>城市名称</th>
-                <th>层级</th>
+                <th>机柜编号</th>
+                <th>机柜地址</th>
+                <th>备注</th>
                 <th style="width: 3.5em;"></th>
             </tr>
             </thead>
             <tbody>
-            <?php foreach($sourceList as $row): ?>
                 <tr>
-                    <td><?php echo $row['class_id']; ?></td>
                     <td>
-                        <a href="/address?pid=<?php echo $row['class_id']; ?>">
-                        <?php echo $row['class_name']; ?>
-                        </a>
                     </td>
-                    <td><?php echo $row['class_type']; ?></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td>
-                        <a href="/address/add?id=<?php echo $row['class_id']; ?>&class_type=<?php echo $row['class_type']; ?>">添加</a>
-                        <a href="/address/edit?id=<?php echo $row['class_id']; ?>"><i class="fa fa-pencil"></i></a>
-                        <a href="/address/deletebyid?id=<?php echo $row['class_id']; ?>" onclick="return confirm('Are sure del this?');"  role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
+                        <a href=""><i class="fa fa-pencil"></i></a>
+                        <a href="/equipment/deletebyid?id=" onclick="return confirm('Are sure del this?');"  role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
                     </td>
                 </tr>
-            <?php endforeach; ?>
             </tbody>
         </table>
 

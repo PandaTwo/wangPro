@@ -15,54 +15,6 @@ class equipment extends MY_Controller
         $this->load->model('m_equipment');
     }
 
-    function edit()
-    {
-        $id = $this->input->get('id');
-
-        $data['content_text'] = 'equipment/edit';
-        $data['show_menu'] = true;
-        $data['menu'] = $this->m_adminmenu->selectWhere();
-        $data['updateModel'] = $this->m_equipment->getModel($id);
-
-        $this->load->view('template', $data);
-    }
-
-    function updatePost()
-    {
-        $postdata = $this->input->post();
-
-        $id = $postdata['id'];
-        $data = array(
-            'equipmentName' => $postdata['equipmentName'],
-            'company' => $postdata['company'],
-            'price' => floatval($postdata['price']),
-            'model' => $postdata['model'],
-            'status' => isset($postdata['status']) ? 1 : 0,
-            'updateName' => 'admin'
-        );
-
-        $res = $this->m_equipment->updateModel($id,$data);
-        if ($res) {
-            alert('修改成功', 'jump', '/equipment/');
-        } else {
-            alert('修改失败', 'jump', '/equipment/');
-        }
-    }
-
-    function deletebyid()
-    {
-        $id = $this->input->get('id');
-        if (!$id) {
-            alert('参数错误','jump', '/equipment/');
-        }
-        $res = $this->m_equipment->deleteequipment($id);
-        if ($res) {
-            alert('删除成功', 'jump', '/equipment/');
-        } else {
-            alert('删除失败','jump', '/equipment/');
-        }
-    }
-
     function index()
     {
         $data['content_text'] = 'equipment/list';
@@ -88,7 +40,7 @@ class equipment extends MY_Controller
         $data = array(
             'equipmentName' => $postdata['equipmentName'],
             'company' => $postdata['company'],
-            'price' => floatval($postdata['price']),
+            'price' => floatval($postdata['Price']),
             'model' => $postdata['model'],
             'status' => isset($postdata['status']) ? 1 : 0,
             'updateName' => 'admin'

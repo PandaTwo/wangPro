@@ -17,16 +17,16 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>状态</th>
-                <th>公告类别</th>
-                <th>标题</th>
-                <th>发布日期<th>
+                <th>机柜编号</th>
+                <th>机柜地址</th>
+                <th>备注</th>
                 <th style="width: 3.5em;"></th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td></td>
+                <td>
+                </td>
                 <td></td>
                 <td></td>
                 <td></td>

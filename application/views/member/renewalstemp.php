@@ -30,27 +30,27 @@
             <td colspan="6" style="text-align: center">收据</td>
         </tr>
         <tr>
-            <td colspan="3">订单编号：<?php echo $data['orderid']; ?></td>
+            <td colspan="3">订单编号：123</td>
             <td colspan="3"><?php echo date('Y-m-d H:i:s') ?></td>
         </tr>
         <tr>
             <td>用户名称</td>
-            <td><?php echo $data['username']; ?></td>
+            <td>Text 1B</td>
             <td>手机号</td>
-            <td><?php echo $data['orderid']; ?></td>
+            <td>手机号</td>
             <td>宽带账号</td>
-            <td><?php echo $data['adsl_id']; ?></td>
+            <td>宽带账号</td>
         </tr>
         <tr>
             <td>合计金额</td>
-            <td colspan="2"><?php echo $data['amountcn']; ?></td>
-            <td><?php echo $data['amount']; ?></td>
+            <td colspan="2">Text 1B</td>
+            <td>840</td>
             <td>密码</td>
-            <td><?php echo $data['adsl_pwd']; ?></td>
+            <td>宽带账号</td>
         </tr>
         <tr>
             <td>项<br>目</td>
-            <td colspan="5"><?php echo $data['packagesName']; ?>，到期时间：<?php echo date('Y年-m月-d日',strtotime($data['end_time1'])); ?></td>
+            <td colspan="5">Text 1B</td>
         </tr>
     </table>
     <div>

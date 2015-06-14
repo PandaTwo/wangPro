@@ -45,22 +45,13 @@ class adminuser extends MY_Controller
 
         if(!$postData){die('数据错误');}
 
-        //判断原密码是否正确
-        $exits = $this->m_adminuser->existadminuser($id,$postData['oldpassword']);
-        if(!$exits)
-        {
-            exit('原密码错误，请重新输入');
-        }
-        if($postData['password'] !=$postData['repassword'])
-        {
-            exit('两次密码输入的不一样');
-        }
         $data = array(
             'username' => $postData['username'],
             'password' => $postData['password'],
             'createdOn' => time(),
             'role' => 1,
         );
+
         $res = $this->m_adminuser->updateadminuser($id,$data);
         if($res)
         {

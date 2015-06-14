@@ -16,33 +16,18 @@ class member extends MY_Controller
 
         $this->load->model('m_equipment');
         $this->load->model('m_cabinets');
-        $this->load->library('pager',array('instance'=>'p','perPage'=>'10'));
-        $this->load->model('m_cityaddress');
-        $this->load->model('m_orders');
     }
 
     function index()
     {
-        $pageIndex = isset($_REQUEST['p']) ? $_REQUEST['p'] : 1;
+
+        $pageIndex = 1;
         $pageSize = 10;
-        $searchKeywords = isset($_REQUEST['searchKeywords']) ? $_REQUEST['searchKeywords'] : '';
 
         $data['content_text'] = 'member/list';
         $data['show_menu'] = true;
         $data['menu'] = $this->m_adminmenu->selectWhere();
-        $allmembers = $this->m_members->getallmembers($pageIndex,$pageSize,$searchKeywords);
-        $data['sourceList'] =$this->m_members->getallmembers($pageIndex,$pageSize,$searchKeywords);
-
-        $this->pager->set_total($allmembers['count']);
-
-        $actual_link = '?';
-        if($searchKeywords)
-        {
-            $actual_link = "/member/?searchKeywords=".$searchKeywords.'&';
-        }
-
-
-        $data['html'] =$this->pager->page_links($actual_link);
+        $data['sourceList'] = $this->m_members->getallmembers($pageIndex,$pageSize);
 
         $this->load->view('template', $data);
     }
@@ -76,7 +61,6 @@ class member extends MY_Controller
             'status' => true
         );
         $data['packages'] = $this->m_packages->getwhere($packagewhere);
-        $data['firststepaddress']  = $this->m_cityaddress->getfiststepAll();
 
         $this->load->view('template', $data);
     }
@@ -95,7 +79,7 @@ class member extends MY_Controller
         $file2='';
 
             $newfilename = date('Y-m-dHis').'-0';
-            $returnmsg = uploadfile('image1',$_SERVER['DOCUMENT_ROOT'].'/static/uploads/',$newfilename);
+            $returnmsg = uploadfile('image1','D:/PHPWork/wangPro/static/uploads/',$newfilename);
             if($returnmsg['status']==1)
             {
                 $file1 = $returnmsg['msg'];
@@ -105,7 +89,7 @@ class member extends MY_Controller
             }
 
             $newfilename1 = date('Y-m-dHis').'-1';
-            $returnmsg1 = uploadfile('image2',$_SERVER['DOCUMENT_ROOT'].'/static/uploads/',$newfilename1);
+            $returnmsg1 = uploadfile('image2','D:/PHPWork/wangPro/static/uploads/',$newfilename1);
             if($returnmsg1['status']==1)
             {
                 $file2 = $returnmsg1['msg'];
@@ -214,15 +198,6 @@ class member extends MY_Controller
                 $postData['amount'] = $package[0]['Price'];
                 $postData['amountcn'] =rmb_format(intval($package[0]['Price']));
                 $postData['orderid'] = $this->getorderNumber();
-                //添加记录到订单收费记录
-                $orderarr = array(
-                    'orderid' => $postData['orderid'],
-                    'userid' => $updateArray['id'],
-                    'type' => '交费',
-                    'addTime'=>time(),
-                    'updateName'=>'admin'
-                );
-                $this->m_orders->addorders($orderarr);
                 $this->regmoneytemp($postData);
 
             }
@@ -264,95 +239,22 @@ class member extends MY_Controller
         $data['packages'] = $this->m_packages->getwhere($packagewhere);
         $data['sourceModel'] = $this->m_members->getMemberByid($id);
 
-
-
         $this->load->view('template', $data);
     }
 
-
-    function searchrenewals()
-    {
-        $getData = $this->input->get();
-
-        $whereData = array(
-            'username'=>$getData['username'],
-            'phoneNumber'=>$getData['phoneNumber']
-        );
-
-        $urlParams = '';
-        foreach($whereData as $key=>$val)
-        {
-            $urlParams.='&'.$key.'='.$val;
-        }
-        $data['sourceModel'] = $this->m_members->searchrenewals($whereData);
-        if($data['sourceModel'])
-        {
-            alert('','jump','/member/renewals?id='.$data['sourceModel']['id'].$urlParams);
-        }else
-        {
-            alert('','jump','/member/renewals?id='.$urlParams);
-        }
-    }
-
-    /*
-     * 续费打单
-     * */
     function postrenewals()
     {
         $postData = $this->input->post();
 
-        $updateArray = array(
-            'id'=>$postData['id'],
-            'adsl_id'=>$postData['adsl_id'],
-            'adsl_pwd'=>$postData['adsl_pwd'],
-            'serviceSatus'=>$postData['serviceSatus'],
-            'packageid'=>$postData['packageid'],
-            'start_time'=>strtotime($postData['start_time']),
-            'end_time'=>strtotime($postData['end_time1']),
-            'username'=>$postData['username'],
-            'sex'=>$postData['sex'],
-            'cardid'=>$postData['cardid'],
-            'phoneNumber'=>$postData['phoneNumber'],
-            'email'=>$postData['email'],
-            'address'=>$postData['address'],
-            'up_time'=>time()
-        );
 
-        $res = $this->m_members->updateMemberById($updateArray);
-
-        if($res) {
-            //获取续费模板内容
-            $package = $this->m_packages->getwhere(array('id' => $postData['packageid']));
-            if ($package)
-            {
-                $postData['packagesName'] = $package[0]['PackagesName'];
-                $postData['amount'] = $package[0]['Price'];
-                $postData['amountcn'] =rmb_format(intval($package[0]['Price']));
-                $postData['orderid'] = $this->getorderNumber();
-                //添加记录到订单收费记录
-                $orderarr = array(
-                    'orderid' => $postData['orderid'],
-                    'userid' => $updateArray['id'],
-                    'type' => '续费',
-                    'addTime'=>time(),
-                    'updateName'=>'admin'
-                );
-                $this->m_orders->addorders($orderarr);
-                $this->renewalstemp($postData);
-            }
-        }
-        else{
-            alert('续费失败，请重新操作.','jump','/member/renewals');
-        }
     }
 
     /*
      * 续费打单模板
      * */
-    function renewalstemp($postData)
+    function renewalstemp()
     {
-        $data['data'] = $postData;
-        $this->load->view('member/renewalstemp',$data);
+        $this->load->view('member/renewalstemp');
     }
 
 
