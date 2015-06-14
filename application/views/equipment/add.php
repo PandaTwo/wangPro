@@ -23,7 +23,7 @@
                             </div>
                             <div class="form-group">
                                 <label>价格</label>
-                                <input name="Price" type="text" value="" class="form-control">
+                                <input name="price" type="text" value="" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>型号</label>

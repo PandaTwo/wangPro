@@ -50,7 +50,9 @@
     </tr>
     <tr>
         <td>项<br>目</td>
-        <td colspan="5"><?php echo $data['packagesName']; ?></td>
+        <td colspan="5">
+            <?php echo $data['packagesName']; ?>，到期时间：<?php echo date('Y年-m月-d日',strtotime($data['end_time1'])); ?>
+        </td>
     </tr>
 </table>
 <div>

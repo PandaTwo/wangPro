@@ -31,16 +31,23 @@
                     <td><?php echo $row['value']; ?></td>
                     <td><?php echo $row['remark']; ?></td>
                     <td>
-                        <a href=""><i class="fa fa-pencil"></i></a>
-                        <a href="/adminuser/edit?id=<?php echo $row['id']; ?>" onclick="return confirm('Are sure del this?');"  role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
+                        <a href="/systemsetting?id=<?php echo $row['id']; ?>&action=update"><i class="fa fa-pencil"></i></a>
+                        <a href="/systemsetting?id=<?php echo $row['id']; ?>&action=delete" onclick="return confirm('Are sure del this?');"  role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
                     </td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
         </table>
         <hr>
+        <?php
+        $isUpdata = false;
+        if(isset($updateModel))
+        {
+            $isUpdata = true;
+        }
+        ?>
         <form action="/systemsetting/addpost" id="tab" method="post">
-            <div class="tab-pane active" id="add">
+            <div style="<?php echo $isUpdata ? 'display: none;' : '' ?>" class="tab-pane active" id="add">
                 <div class="form-group">
                     <label>名称:</label>
                     <input name="title" id="title" type="text" value="" class="form-control">
@@ -58,6 +65,29 @@
                 </div>
             </div>
         </form>
+        <?php if(isset($updateModel)):
+         ?>
+        <form action="/systemsetting/updatepost"  id="tab1" method="post">
+            <input type="hidden" value="<?php echo $updateModel['id'];  ?>" name="id">
+            <div style="<?php echo $isUpdata ? '' : 'display: none;' ?>" class="tab-pane active" id="update">
+                <div class="form-group">
+                    <label>名称:</label>
+                    <input name="title" id="title" type="text" value="<?php echo $updateModel['title'];  ?>" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>值:</label>
+                    <input name="value" id="value" type="text" value="<?php echo $updateModel['value'];  ?>" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>备注:</label>
+                    <input name="remark" id="remark" type="text" value="<?php echo $updateModel['remark'];  ?>" class="form-control">
+                </div>
+                <div class="btn-toolbar list-toolbar">
+                    <button onclick='document.getElementById("tab1").submit();' class="btn btn-primary"><i class="fa fa-save"></i> 提交修改</button>
+                </div>
+            </div>
+        </form>
+        <?php endif; ?>
         <?php
         $this->load->view('include/content_footer.html');
         ?>

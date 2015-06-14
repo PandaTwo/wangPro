@@ -42,6 +42,40 @@ class packages extends MY_Controller
 
     }
 
+    function edit()
+    {
+        $id = $this->input->get('id');
+
+        $data['content_text'] = 'packages/edit';
+        $data['show_menu'] = true;
+        $data['menu'] = $this->m_adminmenu->selectWhere();
+        $data['updateModel'] = $this->m_packages->getModel($id);
+
+        $this->load->view('template', $data);
+    }
+
+    function updatePost()
+    {
+        $postdata = $this->input->post();
+
+        $id = $postdata['id'];
+        $data = array(
+            'PackagesName' => $postdata['PackagesName'],
+            'Speed' => $postdata['Speed'],
+            'Price' => floatval($postdata['Price']),
+            'times' => $postdata['times'],
+            'status' => isset($postdata['status']) ? 1 : 0,
+            'UpdateName' => 'admin'
+        );
+
+        $res = $this->m_packages->updateModel($id,$data);
+        if ($res) {
+            alert('修改成功', 'jump', '/packages/');
+        } else {
+            alert('修改失败', 'jump', '/packages/');
+        }
+    }
+
     function add()
     {
         $data['content_text'] = 'packages/add';

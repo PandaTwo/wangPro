@@ -1,4 +1,4 @@
-<form id="tab" action="/packages/addpost" method="post">
+<form id="tab" action="/adminuser/updatepost" method="post">
     <div class="content">
         <div class="header">
             <h1 class="page-title">管理员密码修改</h1>
@@ -12,22 +12,22 @@
                     <br>
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane active" id="home">
-
+                            <input type="hidden" value="<?php echo $_REQUEST['id'] ?>" name="id">
                             <div class="form-group">
                                 <label>用户名:</label>
                                 <input name="username" id="username" type="text" value="" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>旧密码:</label>
-                                <input name="password" id="passwrod" type="password" value="" class="form-control">
+                                <input name="oldpassword" id="oldpassword" type="" value="" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>密码:</label>
-                                <input name="password" id="passwrod" type="password" value="" class="form-control">
+                                <input name="password" id="passwrod" type="text" value="" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>确认密码:</label>
-                                <input name="repassword" id="repassword" type="password" value="" class="form-control">
+                                <input name="repassword" id="repassword" type="text" value="" class="form-control">
                             </div>
                         </div>
                     </div>

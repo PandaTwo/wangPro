@@ -38,10 +38,10 @@
                 <td><?php echo $row['Speed']; ?></td>
                 <td><?php echo $row['Price']; ?></td>
                 <td><?php echo $row['times']; ?></td>
-                <td><?php echo $row['status']; ?></td>
+                <td><?php echo $row['status']=="1" ? '启用' : '停用' ?></td>
                 <td><?php echo $row['UpdateName']; ?></td>
                 <td>
-                    <a href=""><i class="fa fa-pencil"></i></a>
+                    <a href="/packages/edit?id=<?php echo $row['id']; ?>"><i class="fa fa-pencil"></i></a>
                     <a href="/packages/deletebyid?id=<?php echo $row['id']; ?>" onclick="return confirm('Are sure del this?');"  role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
                 </td>
             </tr>
