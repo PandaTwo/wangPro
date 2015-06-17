@@ -67,7 +67,7 @@
                             <option value="/member/deletebyid?id=<?php echo $row['id']; ?>">删除会员</option>
                             <option value="#">带宽到期</option>
                             <option value="/member/renewals?id=<?php echo $row['id']; ?>">带宽续费</option>
-                            <option value="#">发送短信</option>
+                            <option value="/sms/sendsms?id=<?php echo $row['id']; ?>">发送短信</option>
                             <option value="#">查看留言</option>
                         </select>
                     </td>

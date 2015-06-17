@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50533
 File Encoding         : 65001
 
-Date: 2015-06-17 18:46:27
+Date: 2015-06-18 00:23:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,7 +27,7 @@ CREATE TABLE `adminmenu` (
   `sort` int(11) DEFAULT NULL COMMENT '排序',
   `isshow` bit(1) DEFAULT NULL COMMENT '是否显示',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of adminmenu
@@ -54,6 +54,7 @@ INSERT INTO `adminmenu` VALUES ('21', '续费打单', '1', '/member/renewals', '
 INSERT INTO `adminmenu` VALUES ('22', '短信设置', '6', '/sms/smssetting', '4', '');
 INSERT INTO `adminmenu` VALUES ('23', '发送记录', '6', '/sms/', '5', '');
 INSERT INTO `adminmenu` VALUES ('24', '发送短信', '6', '/sms/sendsms', '6', '');
+INSERT INTO `adminmenu` VALUES ('25', '邮件设置', '6', '/mailsetting/', '7', '');
 
 -- ----------------------------
 -- Table structure for adminuser
@@ -3634,20 +3635,20 @@ CREATE TABLE `setting` (
   `group` varchar(255) DEFAULT NULL,
   `remark` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of setting
 -- ----------------------------
-INSERT INTO `setting` VALUES ('1', 'mailName', 'js.lalarola@gmail.com', '', '邮箱账号');
-INSERT INTO `setting` VALUES ('3', 'mailPwd', '123456', '', '邮箱密码');
-INSERT INTO `setting` VALUES ('4', 'smtpServer', 'smtp.qq.com', '', 'smtp服务器');
-INSERT INTO `setting` VALUES ('5', 'smtpProt', '25', '', 'smtp端口');
-INSERT INTO `setting` VALUES ('6', 'testMail', 'js.lalarola@gmail.com', '', '测试邮箱');
-INSERT INTO `setting` VALUES ('7', 'regMailTitle', '恭喜你你的宽带账号登记成功', '', '用户登记邮件标题');
-INSERT INTO `setting` VALUES ('8', 'regMailContent', '你的宽带账号已经登记成功。', '', '用户登记邮件内容');
-INSERT INTO `setting` VALUES ('9', 'renMailTitle', '恭喜你你的宽带账号续费成功', '', '用户续费邮件标题');
-INSERT INTO `setting` VALUES ('10', 'renMailContent', '你的宽带账号已经续费成功。', '', '用户续费邮件内容');
+INSERT INTO `setting` VALUES ('1', 'mailName', 'zhoukang0426@163.com', 'mail', '邮箱账号');
+INSERT INTO `setting` VALUES ('3', 'mailPwd', 'zhoukang0916', 'mail', '邮箱密码');
+INSERT INTO `setting` VALUES ('4', 'smtpServer', 'smtp.163.com', 'mail', 'smtp服务器');
+INSERT INTO `setting` VALUES ('5', 'smtpProt', '25', 'mail', 'smtp端口');
+INSERT INTO `setting` VALUES ('6', 'testMail', 'panda_it@qq.com', 'mail', '测试邮箱');
+INSERT INTO `setting` VALUES ('7', 'regMailTitle', '恭喜你你的宽带账号登记成功', 'mail', '用户登记邮件标题');
+INSERT INTO `setting` VALUES ('8', 'regMailContent', '你的宽带账号已经登记成功。', 'mail', '用户登记邮件内容');
+INSERT INTO `setting` VALUES ('9', 'renMailTitle', '恭喜你你的宽带账号续费成功', 'mail', '用户续费邮件标题');
+INSERT INTO `setting` VALUES ('10', 'renMailContent', '你的宽带账号已经续费成功。', 'mail', '用户续费邮件内容');
 INSERT INTO `setting` VALUES ('11', 'smsname', '18666034393', 'sms', '短信平台用户名');
 INSERT INTO `setting` VALUES ('12', 'smspwd', '36ECCF21F1F4838ECB8B401370B2', 'sms', 'web平台：基本资料中的接口密码');
 INSERT INTO `setting` VALUES ('13', 'smssign', 'api', 'sms', '短信平台签名');
@@ -3655,6 +3656,8 @@ INSERT INTO `setting` VALUES ('14', 'smsserverurl', 'http://sms.1xinxi.cn/asmx/s
 INSERT INTO `setting` VALUES ('15', 'smssuffix', '【上陈带宽】', 'sms', '短信后缀');
 INSERT INTO `setting` VALUES ('16', 'smstestcontent', '测试短信内容其实也不是特别长，就是一点点长而已。看会报什么错吗？？？？', 'sms', '测试短信内容');
 INSERT INTO `setting` VALUES ('17', 'smstestphonenumber', '13266873852', 'sms', '测试手机号码');
+INSERT INTO `setting` VALUES ('18', 'smsregtemp', '请查阅邮箱，已将（陈某某）用户的开户资料发送传达，请及时开户。成功后将帐号密码回复邮件。', 'smstemp', '开户短信通知模板');
+INSERT INTO `setting` VALUES ('19', 'smsRenewalstemp', '请查阅邮箱，已将（陈某某）用户的续费资料发送传达，请及时续费。成功后将续费截图回复邮件。', 'smstemp', '续费短信通知模板');
 
 -- ----------------------------
 -- Table structure for smsrecord
@@ -3667,7 +3670,7 @@ CREATE TABLE `smsrecord` (
   `sendtime` int(11) DEFAULT NULL,
   `smscontent` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of smsrecord
@@ -3681,3 +3684,4 @@ INSERT INTO `smsrecord` VALUES ('6', null, '失败', '1434532525', '这是一条
 INSERT INTO `smsrecord` VALUES ('7', null, '失败', '1434532785', '这是一条测试短信');
 INSERT INTO `smsrecord` VALUES ('8', null, '成功', '1434532824', '这是一条测试短信');
 INSERT INTO `smsrecord` VALUES ('10', null, '成功', '1434534423', '测试短信内容其实也不是特别长，就是一点点长而已。看会报什么错吗？？？？');
+INSERT INTO `smsrecord` VALUES ('11', '2', '失败', '1434557413', '请查阅邮箱，已将（陈某某）用户的开户资料发送传达，请及时开户。成功后将帐号密码回复邮件。');

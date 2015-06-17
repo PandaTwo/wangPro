@@ -1,21 +1,22 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Pandait
  * Date: 2015/6/16
  * Time: 0:55
  */
-
 class sms extends MY_Controller
 {
     function __construct()
     {
-        parent :: __construct();
+        parent:: __construct();
 
         $this->load->model('m_setting');
         $this->load->library('smsservice');
         $this->load->model('m_smsrecord');
-        $this->load->library('pager',array('instance'=>'p','perPage'=>'20'));
+        $this->load->model('m_members');
+        $this->load->library('pager', array('instance' => 'p', 'perPage' => '20'));
     }
 
     /*
@@ -30,11 +31,11 @@ class sms extends MY_Controller
         $data['show_menu'] = true;
         $data['menu'] = $this->m_adminmenu->selectWhere();
 
-        $pageList = $this->m_smsrecord->getlist($pageIndex,$pageSize);
+        $pageList = $this->m_smsrecord->getlist($pageIndex, $pageSize);
         $data['list'] = $pageList['objlist'];
         $this->pager->set_total($pageList['count']);
         $actual_link = '?';
-        $data['html'] =$this->pager->page_links($actual_link);
+        $data['html'] = $this->pager->page_links($actual_link);
 
         $this->load->view('template', $data);
     }
@@ -46,13 +47,11 @@ class sms extends MY_Controller
     {
         $ids = $_POST['item'];
         $arrLen = count($ids);
-        for($i = 0 ;$i<$arrLen;$i++)
-        {
+        for ($i = 0; $i < $arrLen; $i++) {
             //执行删除操作
             $this->m_smsrecord->deletebyid($ids[$i]);
         }
-
-        alert('','jump','/sms/');
+        alert('', 'jump', '/sms/');
     }
 
     /*
@@ -60,11 +59,29 @@ class sms extends MY_Controller
      * */
     function sendsms()
     {
+        $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : 0;
+
         $data['content_text'] = 'sms/sendmsg';
         $data['show_menu'] = true;
         $data['menu'] = $this->m_adminmenu->selectWhere();
+        $data['smstemps'] = $this->m_setting->getAllByGroup('smstemp');
+
+        if($id)
+        {
+            $data['memberModel'] = $this->m_members->getMemberByid($id);
+        }
 
         $this->load->view('template', $data);
+    }
+
+    function postsendsms()
+    {
+        $postData = $this->input->post();
+
+        $msgname = $postData['tempchoose'];
+        $this->smsservice->sendmsg($postData['phoneNumber'], $postData[$msgname],$postData['id']);
+        alert('短信已发送', 'jump', '/sms/sendsms?id='.$postData['id']);
+
     }
 
     /*
@@ -84,11 +101,10 @@ class sms extends MY_Controller
     function postsmssetting()
     {
         $postdata = $this->input->post();
-        foreach($postdata as $key=>$val)
-        {
-            $this->m_setting->updateModelByName($key,$val);
+        foreach ($postdata as $key => $val) {
+            $this->m_setting->updateModelByName($key, $val);
         }
-        alert('修改成功','jump','/sms/smssetting');
+        alert('修改成功', 'jump', '/sms/smssetting');
     }
 
     /*
@@ -97,12 +113,11 @@ class sms extends MY_Controller
     function postsendtestsms()
     {
         $postdata = $this->input->post();
-        foreach($postdata as $key=>$val)
-        {
-            $this->m_setting->updateModelByName($key,$val);
+        foreach ($postdata as $key => $val) {
+            $this->m_setting->updateModelByName($key, $val);
         }
         //发送短信
-        $this->smsservice->testsendmsg($this->getsetting('smstestphonenumber'),$this->getsetting('smstestcontent'));
-        alert('短信已发送','jump','/sms/smssetting');
+        $this->smsservice->testsendmsg($this->getsetting('smstestphonenumber'), $this->getsetting('smstestcontent'));
+        alert('短信已发送', 'jump', '/sms/smssetting');
     }
 }
