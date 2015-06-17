@@ -14,6 +14,8 @@ class sms extends MY_Controller
 
         $this->load->model('m_setting');
         $this->load->library('smsservice');
+        $this->load->model('m_smsrecord');
+        $this->load->library('pager',array('instance'=>'p','perPage'=>'20'));
     }
 
     /*
@@ -21,11 +23,36 @@ class sms extends MY_Controller
      * */
     function index()
     {
+        $pageIndex = isset($_REQUEST['p']) ? $_REQUEST['p'] : 1;
+        $pageSize = 20;
+
         $data['content_text'] = 'sms/smslist';
         $data['show_menu'] = true;
         $data['menu'] = $this->m_adminmenu->selectWhere();
 
+        $pageList = $this->m_smsrecord->getlist($pageIndex,$pageSize);
+        $data['list'] = $pageList['objlist'];
+        $this->pager->set_total($pageList['count']);
+        $actual_link = '?';
+        $data['html'] =$this->pager->page_links($actual_link);
+
         $this->load->view('template', $data);
+    }
+
+    /*
+     * 删除记录项
+     * */
+    function delsmspost()
+    {
+        $ids = $_POST['item'];
+        $arrLen = count($ids);
+        for($i = 0 ;$i<$arrLen;$i++)
+        {
+            //执行删除操作
+            $this->m_smsrecord->deletebyid($ids[$i]);
+        }
+
+        alert('','jump','/sms/');
     }
 
     /*
@@ -75,7 +102,7 @@ class sms extends MY_Controller
             $this->m_setting->updateModelByName($key,$val);
         }
         //发送短信
-
-        alert('修改成功','jump','/sms/smssetting');
+        $this->smsservice->testsendmsg($this->getsetting('smstestphonenumber'),$this->getsetting('smstestcontent'));
+        alert('短信已发送','jump','/sms/smssetting');
     }
 }

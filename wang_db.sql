@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50533
 File Encoding         : 65001
 
-Date: 2015-06-17 08:50:49
+Date: 2015-06-17 18:46:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -3650,11 +3650,11 @@ INSERT INTO `setting` VALUES ('9', 'renMailTitle', '恭喜你你的宽带账号�
 INSERT INTO `setting` VALUES ('10', 'renMailContent', '你的宽带账号已经续费成功。', '', '用户续费邮件内容');
 INSERT INTO `setting` VALUES ('11', 'smsname', '18666034393', 'sms', '短信平台用户名');
 INSERT INTO `setting` VALUES ('12', 'smspwd', '36ECCF21F1F4838ECB8B401370B2', 'sms', 'web平台：基本资料中的接口密码');
-INSERT INTO `setting` VALUES ('13', 'smssign', '陈东军', 'sms', '短信平台签名');
+INSERT INTO `setting` VALUES ('13', 'smssign', 'api', 'sms', '短信平台签名');
 INSERT INTO `setting` VALUES ('14', 'smsserverurl', 'http://sms.1xinxi.cn/asmx/smsservice.aspx', 'sms', '短信接口提交地址');
 INSERT INTO `setting` VALUES ('15', 'smssuffix', '【上陈带宽】', 'sms', '短信后缀');
-INSERT INTO `setting` VALUES ('16', 'smstestcontent', '这是一条测试短信', 'sms', '测试短信内容');
-INSERT INTO `setting` VALUES ('17', 'smstestphonenumber', '18666034393', 'sms', '测试手机号码');
+INSERT INTO `setting` VALUES ('16', 'smstestcontent', '测试短信内容其实也不是特别长，就是一点点长而已。看会报什么错吗？？？？', 'sms', '测试短信内容');
+INSERT INTO `setting` VALUES ('17', 'smstestphonenumber', '13266873852', 'sms', '测试手机号码');
 
 -- ----------------------------
 -- Table structure for smsrecord
@@ -3667,8 +3667,17 @@ CREATE TABLE `smsrecord` (
   `sendtime` int(11) DEFAULT NULL,
   `smscontent` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of smsrecord
 -- ----------------------------
+INSERT INTO `smsrecord` VALUES ('1', null, '成功', '1434524354', '这是一条测试短信');
+INSERT INTO `smsrecord` VALUES ('2', null, '成功', '1434531542', '这是一条测试短信');
+INSERT INTO `smsrecord` VALUES ('3', null, '失败', '1434531881', '这是一条测试短信');
+INSERT INTO `smsrecord` VALUES ('4', null, '失败', '1434531923', '这是一条测试短信');
+INSERT INTO `smsrecord` VALUES ('5', null, '失败', '1434531979', '这是一条测试短信');
+INSERT INTO `smsrecord` VALUES ('6', null, '失败', '1434532525', '这是一条测试短信');
+INSERT INTO `smsrecord` VALUES ('7', null, '失败', '1434532785', '这是一条测试短信');
+INSERT INTO `smsrecord` VALUES ('8', null, '成功', '1434532824', '这是一条测试短信');
+INSERT INTO `smsrecord` VALUES ('10', null, '成功', '1434534423', '测试短信内容其实也不是特别长，就是一点点长而已。看会报什么错吗？？？？');

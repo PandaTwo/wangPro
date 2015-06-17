@@ -14,6 +14,7 @@ class MY_Controller extends CI_Controller
         parent :: __construct();
         header('Content-Type: text/html; charset=UTF-8');
         $this->checklogin();
+        $this->load->model('m_setting');
 
     }
 
@@ -28,5 +29,19 @@ class MY_Controller extends CI_Controller
             alert('','jump','/login/');
         }
         $this->adminName = $_SESSION['adminUserName'];
+    }
+
+    /*
+     * 根据title获取配置value
+     * */
+    public function getsetting($title)
+    {
+        $res = $this->m_setting->getModelByName($title);
+        if($res)
+        {
+            return $res['value'];
+        }
+
+        return '';
     }
 }
