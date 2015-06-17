@@ -57,6 +57,10 @@
                     <input name="value" id="value" type="text" value="" class="form-control">
                 </div>
                 <div class="form-group">
+                    <label>所在设置组:</label>
+                    <input name="group" id="group" type="text" value="" class="form-control">
+                </div>
+                <div class="form-group">
                     <label>备注:</label>
                     <input name="remark" id="remark" type="text" value="" class="form-control">
                 </div>
@@ -77,6 +81,10 @@
                 <div class="form-group">
                     <label>值:</label>
                     <input name="value" id="value" type="text" value="<?php echo $updateModel['value'];  ?>" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>所在设置组:</label>
+                    <input name="group" id="group" type="text" value="<?php echo $updateModel['group'];  ?>" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>备注:</label>

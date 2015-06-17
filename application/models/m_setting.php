@@ -15,16 +15,6 @@ class m_setting extends CI_Model
         $this->load->database();
     }
 
-    /*
-     * 根据名称修改配置
-     * */
-    function updateModelByName($name,$data=array())
-    {
-        $this->db->where('title',$name);
-        $res = $this->db->update($this->table_name, $data);
-
-        return $res ? true : false;
-    }
 
     /*
      * 根据名称获取一条数据
@@ -36,6 +26,24 @@ class m_setting extends CI_Model
         $query = $this->db->get($this->table_name);
 
         return $query->row_array();
+    }
+
+    /*
+     * 根据分组获取资料
+     * */
+    function getAllByGroup($group)
+    {
+        $this->db->where('group',$group);
+        $query = $this->db->get($this->table_name);
+        return $query->result_array();
+    }
+
+    function updateModelByName($name,$value)
+    {
+        $this->db->where('title',$name);
+        $res =$this->db->update($this->table_name,array('value'=>$value));
+
+        return $res ? true : false;
     }
 
     function updateModel($id,$data=array())

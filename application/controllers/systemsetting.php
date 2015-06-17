@@ -67,7 +67,7 @@ class systemsetting extends MY_Controller
             'title' => $postdata['title'],
             'value' => $postdata['value'],
             'remark' => $postdata['remark'],
-            'group' => ''
+            'group' => $postdata['group']
         );
         $res = $this->m_setting->updateModel($id,$data);
         if ($res) {
@@ -86,7 +86,7 @@ class systemsetting extends MY_Controller
             'title' => $postdata['title'],
             'value' => $postdata['value'],
             'remark' => $postdata['remark'],
-            'group' => ''
+            'group' => $postdata['group']
         );
         $res = $this->m_setting->addsetting($data);
 
