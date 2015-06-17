@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50533
 File Encoding         : 65001
 
-Date: 2015-06-15 01:10:17
+Date: 2015-06-17 08:50:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,7 +27,7 @@ CREATE TABLE `adminmenu` (
   `sort` int(11) DEFAULT NULL COMMENT '排序',
   `isshow` bit(1) DEFAULT NULL COMMENT '是否显示',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of adminmenu
@@ -51,6 +51,9 @@ INSERT INTO `adminmenu` VALUES ('18', '用户登记', '1', '/member/registraion'
 INSERT INTO `adminmenu` VALUES ('19', '登记列表', '1', '/member/registraionlist', '3', '');
 INSERT INTO `adminmenu` VALUES ('20', '会员列表', '1', '/member', '3', '');
 INSERT INTO `adminmenu` VALUES ('21', '续费打单', '1', '/member/renewals', '4', '');
+INSERT INTO `adminmenu` VALUES ('22', '短信设置', '6', '/sms/smssetting', '4', '');
+INSERT INTO `adminmenu` VALUES ('23', '发送记录', '6', '/sms/', '5', '');
+INSERT INTO `adminmenu` VALUES ('24', '发送短信', '6', '/sms/sendsms', '6', '');
 
 -- ----------------------------
 -- Table structure for adminuser
@@ -3631,7 +3634,7 @@ CREATE TABLE `setting` (
   `group` varchar(255) DEFAULT NULL,
   `remark` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of setting
@@ -3645,3 +3648,27 @@ INSERT INTO `setting` VALUES ('7', 'regMailTitle', '恭喜你你的宽带账号�
 INSERT INTO `setting` VALUES ('8', 'regMailContent', '你的宽带账号已经登记成功。', '', '用户登记邮件内容');
 INSERT INTO `setting` VALUES ('9', 'renMailTitle', '恭喜你你的宽带账号续费成功', '', '用户续费邮件标题');
 INSERT INTO `setting` VALUES ('10', 'renMailContent', '你的宽带账号已经续费成功。', '', '用户续费邮件内容');
+INSERT INTO `setting` VALUES ('11', 'smsname', '18666034393', 'sms', '短信平台用户名');
+INSERT INTO `setting` VALUES ('12', 'smspwd', '36ECCF21F1F4838ECB8B401370B2', 'sms', 'web平台：基本资料中的接口密码');
+INSERT INTO `setting` VALUES ('13', 'smssign', '陈东军', 'sms', '短信平台签名');
+INSERT INTO `setting` VALUES ('14', 'smsserverurl', 'http://sms.1xinxi.cn/asmx/smsservice.aspx', 'sms', '短信接口提交地址');
+INSERT INTO `setting` VALUES ('15', 'smssuffix', '【上陈带宽】', 'sms', '短信后缀');
+INSERT INTO `setting` VALUES ('16', 'smstestcontent', '这是一条测试短信', 'sms', '测试短信内容');
+INSERT INTO `setting` VALUES ('17', 'smstestphonenumber', '18666034393', 'sms', '测试手机号码');
+
+-- ----------------------------
+-- Table structure for smsrecord
+-- ----------------------------
+DROP TABLE IF EXISTS `smsrecord`;
+CREATE TABLE `smsrecord` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid` int(11) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `sendtime` int(11) DEFAULT NULL,
+  `smscontent` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of smsrecord
+-- ----------------------------
