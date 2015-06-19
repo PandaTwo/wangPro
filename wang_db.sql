@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50533
 File Encoding         : 65001
 
-Date: 2015-06-18 00:23:34
+Date: 2015-06-19 08:30:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -3635,7 +3635,7 @@ CREATE TABLE `setting` (
   `group` varchar(255) DEFAULT NULL,
   `remark` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of setting
@@ -3658,6 +3658,8 @@ INSERT INTO `setting` VALUES ('16', 'smstestcontent', '测试短信内容其实�
 INSERT INTO `setting` VALUES ('17', 'smstestphonenumber', '13266873852', 'sms', '测试手机号码');
 INSERT INTO `setting` VALUES ('18', 'smsregtemp', '请查阅邮箱，已将（陈某某）用户的开户资料发送传达，请及时开户。成功后将帐号密码回复邮件。', 'smstemp', '开户短信通知模板');
 INSERT INTO `setting` VALUES ('19', 'smsRenewalstemp', '请查阅邮箱，已将（陈某某）用户的续费资料发送传达，请及时续费。成功后将续费截图回复邮件。', 'smstemp', '续费短信通知模板');
+INSERT INTO `setting` VALUES ('20', 'operatorphonenumber', '13266873852', 'operator', '运营商手机号码');
+INSERT INTO `setting` VALUES ('21', 'operatoremail', 'panda_it@qq.com', 'operator', '运营商邮箱地址');
 
 -- ----------------------------
 -- Table structure for smsrecord
