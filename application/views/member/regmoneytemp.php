@@ -44,14 +44,14 @@
     <tr>
         <td>合计金额</td>
         <td colspan="2"><?php echo $data['amountcn']; ?></td>
-        <td><?php echo $data['amount']; ?></td>
+        <td><?php echo $data['end_time']; ?></td>
         <td>密码</td>
         <td><?php echo $data['adsl_pwd']; ?></td>
     </tr>
     <tr>
         <td>项<br>目</td>
         <td colspan="5">
-            <?php echo $data['packagesName']; ?>，到期时间：<?php echo date('Y年-m月-d日',strtotime($data['end_time1'])); ?>
+            <?php echo $_GET['packagesName']; ?>，到期时间：<?php echo date('Y年-m月-d日',strtotime($data['end_time'])); ?>
         </td>
     </tr>
 </table>

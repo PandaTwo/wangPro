@@ -61,7 +61,7 @@
                     <td><?php echo $row['cNumber']; ?></td>
                     <td><?php echo $row['updateName']; ?></td>
                     <td>
-                        <select onchange="javascript:location.href=this.value;">
+                        <select id="optionlink" class="optionlink">
                             <option value="#">==请选择操作==</option>
                             <option value="/member/edit?id=<?php echo $row['id']; ?>">修改资料</option>
                             <option value="/member/deletebyid?id=<?php echo $row['id']; ?>">删除会员</option>
@@ -82,3 +82,22 @@
         ?>
     </div>
 </div>
+<script>
+    $(function(){
+        $('.optionlink').change(function() {
+           var val = this.value;
+            if(val.indexOf('deletebyid') > -1)
+            {
+                var res = confirm('确定删除当前会员？');
+                if(res)
+                {
+                    window.location.href = val;
+                }else{
+                    return;
+                }
+            }
+            window.location.href = val;
+        });
+    })
+
+</script>

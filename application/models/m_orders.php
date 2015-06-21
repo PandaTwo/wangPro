@@ -106,6 +106,14 @@ class m_orders extends CI_Model
 
     }
 
+    function getModelByOrderid($orderid)
+    {
+        $this->db->where('orderid',$orderid);
+        $query = $this->db->get($this->table_name);
+
+        return $query->row_array();
+    }
+
     /*
      * insert
      * */

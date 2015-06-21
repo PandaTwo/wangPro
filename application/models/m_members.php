@@ -35,7 +35,7 @@ class m_members extends CI_Model
         if ($searchKeywords) {
             $this->db->where("(m.adsl_id LIKE '$searchKeywords' OR m.username LIKE '$searchKeywords' OR m.phoneNumber LIKE '$searchKeywords')");
         }
-
+        $this->db->order_by('m.id','desc');
         $data['count'] = $this->db->count_all_results();
 
         $this->db->select('m.*,p.PackagesName as pName,e.equipmentName as eName,c.cabinetsNumber as cNumber');
@@ -49,6 +49,7 @@ class m_members extends CI_Model
             $this->db->where("(m.adsl_id LIKE '$searchKeywords' OR m.username LIKE '$searchKeywords' OR m.phoneNumber LIKE '$searchKeywords')");
 
         }
+        $this->db->order_by('m.id','desc');
 
         $this->db->limit($pageSize, ($pageIndex - 1) * $pageSize);
 
@@ -80,9 +81,9 @@ class m_members extends CI_Model
     {
         if (!$data) return false;
 
-        $res = $this->db->insert($this->table_name, $data);
-
-        return $res ? true : false;
+        $this->db->insert($this->table_name, $data);
+        $insert_id = $this->db->insert_id();
+        return $insert_id;
     }
 
     /*
@@ -95,7 +96,7 @@ class m_members extends CI_Model
         $this->db->join($this->packages_table_name . ' p', 'm.packageid = p.id', 'left');
 
         $this->db->where(array('m.serviceSatus' => null));
-
+        $this->db->order_by('id','desc');
         $query = $this->db->get();
 
         return $query->result_array();
@@ -125,6 +126,15 @@ class m_members extends CI_Model
 
         return null;
 
+    }
+
+    function deletebyid($id)
+    {
+        $this->db->where('id',$id);
+
+        $res = $this->db->delete($this->table_name);
+
+        return $res ? true : false;
     }
 
     /*

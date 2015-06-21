@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50533
 File Encoding         : 65001
 
-Date: 2015-06-19 08:30:49
+Date: 2015-06-21 22:40:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,7 +27,7 @@ CREATE TABLE `adminmenu` (
   `sort` int(11) DEFAULT NULL COMMENT '排序',
   `isshow` bit(1) DEFAULT NULL COMMENT '是否显示',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of adminmenu
@@ -55,6 +55,7 @@ INSERT INTO `adminmenu` VALUES ('22', '短信设置', '6', '/sms/smssetting', '4
 INSERT INTO `adminmenu` VALUES ('23', '发送记录', '6', '/sms/', '5', '');
 INSERT INTO `adminmenu` VALUES ('24', '发送短信', '6', '/sms/sendsms', '6', '');
 INSERT INTO `adminmenu` VALUES ('25', '邮件设置', '6', '/mailsetting/', '7', '');
+INSERT INTO `adminmenu` VALUES ('26', '邮件记录', '6', '/mailrecord/', '8', '');
 
 -- ----------------------------
 -- Table structure for adminuser
@@ -3518,6 +3519,30 @@ INSERT INTO `cityaddress` VALUES ('3407', '3401', '肥东县', '3');
 INSERT INTO `cityaddress` VALUES ('3408', '3401', '肥西县', '3');
 
 -- ----------------------------
+-- Table structure for emailrecord
+-- ----------------------------
+DROP TABLE IF EXISTS `emailrecord`;
+CREATE TABLE `emailrecord` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `emailaddress` varchar(255) DEFAULT NULL,
+  `content` text,
+  `title` varchar(255) DEFAULT NULL,
+  `addtime` int(11) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of emailrecord
+-- ----------------------------
+INSERT INTO `emailrecord` VALUES ('1', 'panda_it@qq.com', '<table><tr><td>姓名</td><td>陈光标</td></tr><tr><td>身份证</td><td>112312345345345345345</td></tr><tr><td>地址</td><td>深圳市南山区高新科技园中区一路腾讯大厦</td></tr><tr><td>身份证正面</td><td><img scr=\"www.wang.com/static/uploads/2015-06-21161700-0.png\"></td></tr><tr><td>身份证反面</td><td><img scr=\"www.wang.com/static/uploads/2015-06-21161700-1.png\"></td></tr></table>', '陈光标开户资料', '1434874748', '成功');
+INSERT INTO `emailrecord` VALUES ('2', 'panda_it@qq.com', '<table><tr><td>姓名</td><td>周大大</td></tr><tr><td>身份证</td><td>430321199098091234</td></tr><tr><td>地址</td><td>周大大家里的地址啊啊啊</td></tr><tr><td>身份证正面</td><td><img scr=\"http://www.wang.com/static/uploads/2015-06-21163540-0.png\"></td></tr><tr><td>身份证反面</td><td><img scr=\"http://www.wang.com/static/uploads/2015-06-21163540-1.png\"></td></tr></table>', '周大大开户资料', '1434875745', '成功');
+INSERT INTO `emailrecord` VALUES ('3', 'panda_it@qq.com', '<table><tr><td>姓名</td><td>李大大</td></tr><tr><td>身份证</td><td>112312345345345345345</td></tr><tr><td>地址</td><td>深圳市南山区高新科技园中区一路腾讯大厦</td></tr><tr><td>身份证正面</td><td><img scr=\"http://www.wang.com/static/uploads/2015-06-21164723-0.png\"></td></tr><tr><td>身份证反面</td><td><img scr=\"http://www.wang.com/static/uploads/2015-06-21164723-1.png\"></td></tr></table>', '李大大开户资料', '1434876468', '成功');
+INSERT INTO `emailrecord` VALUES ('4', 'panda_it@qq.com', '<table><tr><td>姓名</td><td>周哈哈</td></tr><tr><td>身份证</td><td>112312345345345345345</td></tr><tr><td>地址</td><td>深圳市南山区高新科技园中区一路腾讯大厦</td></tr><tr><td>身份证正面</td><td><img scr=\"http://www.wang.com/static/uploads/2015-06-21165103-0.png\"></td></tr><tr><td>身份证反面</td><td><img scr=\"http://www.wang.com/static/uploads/2015-06-21165103-1.png\"></td></tr></table>', '周哈哈开户资料', '1434876681', '成功');
+INSERT INTO `emailrecord` VALUES ('5', 'panda_it@qq.com', '<table><tr><td>姓名</td><td>噘喊叫在</td></tr><tr><td>身份证</td><td>112312345345345345345</td></tr><tr><td>地址</td><td>深圳市南山区高新科技园中区一路腾讯大厦</td></tr><tr><td>身份证正面</td><td><img scr=\"http://www.wang.com/static/uploads/2015-06-21165312-0.png\"></td></tr><tr><td>身份证反面</td><td><img scr=\"http://www.wang.com/static/uploads/2015-06-21165312-1.png\"></td></tr></table>', '噘喊叫在开户资料', '1434876810', '成功');
+INSERT INTO `emailrecord` VALUES ('6', 'panda_it@qq.com', '<table><tr><td>姓名</td><td>要疯了</td></tr><tr><td>身份证</td><td>112312345345345345345</td></tr><tr><td>地址</td><td>深圳市南山区高新科技园中区一路腾讯大厦</td></tr><tr><td>身份证正面</td><td><img scr=\"http://www.wang.com/static/uploads/2015-06-21165422-0.png\"></td></tr><tr><td>身份证反面</td><td><img scr=\"http://www.wang.com/static/uploads/2015-06-21165422-1.png\"></td></tr></table>', '要疯了开户资料', '1434876866', '成功');
+
+-- ----------------------------
 -- Table structure for equipment
 -- ----------------------------
 DROP TABLE IF EXISTS `equipment`;
@@ -3566,12 +3591,11 @@ CREATE TABLE `members` (
   `cabinetsid` int(11) DEFAULT NULL COMMENT '机柜id',
   `updateName` varchar(255) DEFAULT NULL COMMENT '操作人',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of members
 -- ----------------------------
-INSERT INTO `members` VALUES ('1', '宽带账号', '宽带密码', '正常', '7', '1433088000', '1434300475', '1443628800', null, '陈光标', '男', '112312345345345345345', '', '', '132111112345', 'guanbiao@qq.com', '光标家里的地址', '1', '123123123123123123123123', '1', 'admin');
 INSERT INTO `members` VALUES ('2', 'adsl_username', 'adslpwd', '正常', '7', '1433865600', null, '1435593600', null, 'test', '男', '112312345345345345345', '', '', '135190019001', '1234@qq.com', '地址很长长长长长长长！！！！', '1', '123123123123123123', '1', 'admin');
 INSERT INTO `members` VALUES ('3', 'panda_asdl', 'panda_pwd', '正常', '7', '1434211200', null, '1435593600', null, '熊猫', '男', '112312345345345345345', '', '', '132111112345', 'guanbiao@qq.com', '深圳市南山区高新科技园中区一路腾讯大厦', '1', '', '1', 'admin');
 INSERT INTO `members` VALUES ('4', 'test_asdl', 'test_pwd', '正常', '7', '1433088000', null, '1441036800', null, 'test', '男', '112312345345345345345', '2015-06-02140835.jpg', '2015-06-02140835.jpg', '132111112345', 'guanbiao@qq.com', '深圳市南山区高新科技园中区一路腾讯大厦', '3', 'abcdefg', '1', 'admin');
@@ -3580,6 +3604,13 @@ INSERT INTO `members` VALUES ('6', null, null, null, '7', null, null, null, null
 INSERT INTO `members` VALUES ('7', null, null, null, '7', null, null, null, null, 'admin', '男', '112312345345345345345', '2015-06-02143102.jpg', '', '132111112345', 'guanbiao@qq.com', '深圳市南山区高新科技园中区一路腾讯大厦', null, null, null, 'admin');
 INSERT INTO `members` VALUES ('8', null, null, null, '8', null, null, null, null, '林志玲', '女', '112312345345345345345', '2015-06-02174337-0.jpg', '2015-06-02174337-1.jpg', '132111112345', 'guanbiao@qq.com', '女神免费安装。', null, null, null, 'admin');
 INSERT INTO `members` VALUES ('9', '宽带账号', 'adslpwd', '正常', '7', '1434211200', null, '1435593600', null, '陈光标', '男', '112312345345345345345', '', '', '135190019001', 'guanbiao@qq.com', '地址很长长长长长长长！！！！', '1', '123123123123123123123123', '1', 'admin');
+INSERT INTO `members` VALUES ('10', null, null, null, '7', null, null, null, null, '陈光标', '男', '112312345345345345345', '2015-06-21161359-0.png', '2015-06-21161359-1.png', '135190019001', 'guanbiao@qq.com', '深圳市南山区高新科技园中区一路腾讯大厦', null, null, null, 'admin');
+INSERT INTO `members` VALUES ('11', null, null, null, '7', null, null, null, null, '陈光标', '男', '112312345345345345345', '2015-06-21161700-0.png', '2015-06-21161700-1.png', '135190019001', 'guanbiao@qq.com', '深圳市南山区高新科技园中区一路腾讯大厦', null, null, null, 'admin');
+INSERT INTO `members` VALUES ('12', null, null, null, '7', null, null, null, null, '周大大', '男', '430321199098091234', '2015-06-21163540-0.png', '2015-06-21163540-1.png', '13212341234', 'guanbiao@qq.com', '周大大家里的地址啊啊啊', null, null, null, 'admin');
+INSERT INTO `members` VALUES ('13', null, null, null, '7', null, null, null, null, '李大大', '男', '112312345345345345345', '2015-06-21164723-0.png', '2015-06-21164723-1.png', '13212341234', 'guanbiao@qq.com', '深圳市南山区高新科技园中区一路腾讯大厦', null, null, null, 'admin');
+INSERT INTO `members` VALUES ('14', null, null, null, '7', null, null, null, null, '周哈哈', '男', '112312345345345345345', '2015-06-21165103-0.png', '2015-06-21165103-1.png', '135190019001', 'guanbiao@qq.com', '深圳市南山区高新科技园中区一路腾讯大厦', null, null, null, 'admin');
+INSERT INTO `members` VALUES ('15', null, null, null, '7', null, null, null, null, '噘喊叫在', '男', '112312345345345345345', '2015-06-21165312-0.png', '2015-06-21165312-1.png', '135190019001', 'guanbiao@qq.com', '深圳市南山区高新科技园中区一路腾讯大厦', null, null, null, 'admin');
+INSERT INTO `members` VALUES ('16', 'adsl_username', 'adslpwd', '正常', '7', '1434816000', null, '1435593600', null, '要疯了1', '男', '112312345345345345345', '2015-06-21165422-0.png', '2015-06-21165422-1.png', '135190019001', 'guanbiao@qq.com', '深圳市南山区高新科技园中区一路腾讯大厦', '1', '', '1', 'admin');
 
 -- ----------------------------
 -- Table structure for orders
@@ -3593,7 +3624,7 @@ CREATE TABLE `orders` (
   `addTime` int(11) DEFAULT NULL,
   `updateName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of orders
@@ -3602,6 +3633,11 @@ INSERT INTO `orders` VALUES ('1', '20150614183323', '3', '交费', '1434278003',
 INSERT INTO `orders` VALUES ('2', '20150614232749', '4', '交费', '1434295669', 'admin');
 INSERT INTO `orders` VALUES ('3', '20150615004528', '5', '续费', '1434300328', 'admin');
 INSERT INTO `orders` VALUES ('4', '20150615004755', '1', '续费', '1434300475', 'admin');
+INSERT INTO `orders` VALUES ('5', '20150621180111', '1', '续费', '1434880871', 'admin');
+INSERT INTO `orders` VALUES ('6', '20150621181038', '1', '续费', '1434881438', 'admin');
+INSERT INTO `orders` VALUES ('7', '20150621195524', '16', '交费', '1434887724', 'admin');
+INSERT INTO `orders` VALUES ('8', '20150621195530', '16', '交费', '1434887730', 'admin');
+INSERT INTO `orders` VALUES ('9', '20150621195619', '16', '交费', '1434887779', 'admin');
 
 -- ----------------------------
 -- Table structure for packages
@@ -3672,7 +3708,7 @@ CREATE TABLE `smsrecord` (
   `sendtime` int(11) DEFAULT NULL,
   `smscontent` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of smsrecord
@@ -3687,3 +3723,10 @@ INSERT INTO `smsrecord` VALUES ('7', null, '失败', '1434532785', '这是一条
 INSERT INTO `smsrecord` VALUES ('8', null, '成功', '1434532824', '这是一条测试短信');
 INSERT INTO `smsrecord` VALUES ('10', null, '成功', '1434534423', '测试短信内容其实也不是特别长，就是一点点长而已。看会报什么错吗？？？？');
 INSERT INTO `smsrecord` VALUES ('11', '2', '失败', '1434557413', '请查阅邮箱，已将（陈某某）用户的开户资料发送传达，请及时开户。成功后将帐号密码回复邮件。');
+INSERT INTO `smsrecord` VALUES ('12', '10', '成功', '1434874442', '请查阅邮箱，已将（陈光标）用户的开户资料发送传达，请及时开户。成功后将帐号密码回复邮件。');
+INSERT INTO `smsrecord` VALUES ('13', '11', '成功', '1434874744', '请查阅邮箱，已将（陈光标）用户的开户资料发送传达，请及时开户。成功后将帐号密码回复邮件。');
+INSERT INTO `smsrecord` VALUES ('14', '12', '成功', '1434875741', '请查阅邮箱，已将（周大大）用户的开户资料发送传达，请及时开户。成功后将帐号密码回复邮件。');
+INSERT INTO `smsrecord` VALUES ('15', '13', '成功', '1434876465', '请查阅邮箱，已将（李大大）用户的开户资料发送传达，请及时开户。成功后将帐号密码回复邮件。');
+INSERT INTO `smsrecord` VALUES ('16', '14', '成功', '1434876676', '请查阅邮箱，已将（周哈哈）用户的开户资料发送传达，请及时开户。成功后将帐号密码回复邮件。');
+INSERT INTO `smsrecord` VALUES ('17', '15', '成功', '1434876808', '请查阅邮箱，已将（噘喊叫在）用户的开户资料发送传达，请及时开户。成功后将帐号密码回复邮件。');
+INSERT INTO `smsrecord` VALUES ('18', '16', '成功', '1434876863', '请查阅邮箱，已将（要疯了）用户的开户资料发送传达，请及时开户。成功后将帐号密码回复邮件。');
