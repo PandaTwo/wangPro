@@ -34,7 +34,11 @@
                             </div>
                             <div class="form-group">
                                 <label>时长</label>
-                                <input name="times" type="text" value="" class="form-control">
+                                <select name="times" class="form-control">
+                                    <option value="年度">年度</option>
+                                    <option value="季度">季度</option>
+                                    <option value="月度">月度</option>
+                                </select>
                             </div>
 
                             <div class="form-group">

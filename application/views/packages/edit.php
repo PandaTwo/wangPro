@@ -24,7 +24,11 @@
                             </div>
                             <div class="form-group">
                                 <label>时长</label>
-                                <input name="times" type="text" value="<?php echo $updateModel['times']; ?>" class="form-control">
+                                <select name="times" class="form-control">
+                                    <option <?php echo $updateModel['times'] == '年度' ? 'selected' :''  ?> value="年度">年度</option>
+                                    <option <?php echo $updateModel['times'] == '季度' ? 'selected' :''  ?> value="季度">季度</option>
+                                    <option <?php echo $updateModel['times'] == '月度' ? 'selected' :''  ?> value="月度">月度</option>
+                                </select>
                             </div>
 
                             <div class="form-group">

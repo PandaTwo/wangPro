@@ -373,7 +373,8 @@ class member extends MY_Controller
 
         $whereData = array(
             'username' => $getData['username'],
-            'phoneNumber' => $getData['phoneNumber']
+            'phoneNumber' => $getData['phoneNumber'],
+            'adsl_id' => $getData['adsl_id']
         );
 
         $urlParams = '';

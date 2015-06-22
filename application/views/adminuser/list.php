@@ -28,7 +28,7 @@
                         <?php echo $row['id']; ?>
                     </td>
                     <td><?php echo $row['username']; ?></td>
-                    <td><?php echo $row['password']; ?></td>
+                    <td>*******</td>
                     <td><?php echo $row['createdOn']; ?></td>
                     <td>
                         <a href="/adminuser/edit?id=<?php echo $row['id']; ?>"><i class="fa fa-pencil"></i></a>

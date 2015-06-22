@@ -7,6 +7,7 @@
     <div class="btn-toolbar list-toolbar">
         <span>姓名：<input type="text" name="username" value="<?php echo isset($_REQUEST['username']) ? $_REQUEST['username'] :''  ?>"> </span>
         <span>手机号码：<input type="text" name="phoneNumber" value="<?php echo isset($_REQUEST['phoneNumber']) ? $_REQUEST['phoneNumber'] :''  ?>"></span>
+        <span>宽带账号：<input type="text" name="adsl_id" value="<?php echo isset($_REQUEST['adsl_id']) ? $_REQUEST['adsl_id'] :''  ?>"></span>
         <input type="submit"  class="btn btn-primary" value="搜索">
         <div class="btn-group">
         </div>

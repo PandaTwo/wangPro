@@ -49,9 +49,12 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'eppswqkq_pandait';
-$db['default']['password'] = 'uQS34$n3';
-$db['default']['database'] = 'eppswqkq_wang';
+//$db['default']['username'] = 'eppswqkq_pandait';
+//$db['default']['password'] = 'uQS34$n3';
+//$db['default']['database'] = 'eppswqkq_wang';
+$db['default']['username'] = 'root';
+$db['default']['password'] = '123456';
+$db['default']['database'] = 'wang_db';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

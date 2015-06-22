@@ -119,6 +119,10 @@ class m_members extends CI_Model
         if (isset($where['phoneNumber']) && !empty($where['phoneNumber'])) {
             $this->db->where('phoneNumber', $where['phoneNumber']);
         }
+        if(isset($where['adsl_id']) && !empty($where['adsl_id']))
+        {
+            $this->db->where('adsl_id', $where['adsl_id']);
+        }
 
         //$this->db->where('serviceSatus', null);
         $query = $this->db->get($this->table_name);

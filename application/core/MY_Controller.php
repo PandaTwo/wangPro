@@ -27,6 +27,12 @@ class MY_Controller extends CI_Controller
         if (!isset($_SESSION)) {
             session_start();
         }
+        //20分钟过期
+        if( !isset( $_SESSION['authenticated'] ) || time() - $_SESSION['login_time'] > 1200) {
+            unset($_SESSION["authenticated"]);  // where $_SESSION["nome"] is your own variable. if you do not have one use only this as follow **session_unset();**
+            unset($_SESSION['adminUserName']);
+            alert('', 'jump', '/login/');
+        }
         if (!isset($_SESSION['authenticated'])) {
             alert('', 'jump', '/login/');
         }
@@ -44,8 +50,8 @@ class MY_Controller extends CI_Controller
         $htmltemp .= '<tr><td>姓名</td><td>' . $model['username'] . '</td></tr>';
         $htmltemp .= '<tr><td>身份证</td><td>' . $model['cardid'] . '</td></tr>';
         $htmltemp .= '<tr><td>地址</td><td>' . $model['address'] . '</td></tr>';
-        $htmltemp .= '<tr><td>身份证正面</td><td><img scr="' .$imghostpath . $model['cardpic'] . '"></td></tr>';
-        $htmltemp .= '<tr><td>身份证反面</td><td><img scr="' .$imghostpath . $model['cardpic1'] . '"></td></tr>';
+        $htmltemp .= '<tr><td>身份证正面</td><td><a target="_blank" href="' .$imghostpath . $model['cardpic'] . '"><img style="width: 500px;height: 300px;" scr="' .$imghostpath . $model['cardpic'] . '"></a></td></tr>';
+        $htmltemp .= '<tr><td>身份证反面</td><td><a target="_blank" href="' .$imghostpath . $model['cardpic1'] . '"><img style="width: 500px;height: 300px;" scr="' .$imghostpath . $model['cardpic1'] . '"></a></td></tr>';
         $htmltemp .= '</table>';
 
         return $htmltemp;
