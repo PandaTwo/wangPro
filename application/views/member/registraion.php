@@ -44,7 +44,7 @@
                             </div>
                             <div class="form-group">
                                 <label>安装地址</label>
-                                <select id="sheng">
+                                <select id="sheng" name="sheng">
                                     <option value="0">==请选择==</option>
                                     <?php foreach($firststepaddress as $row): ?>
                                         <option value="<?php echo $row['class_id'] ?>"><?php echo $row['class_name'] ?></option>

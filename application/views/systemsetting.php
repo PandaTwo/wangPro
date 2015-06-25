@@ -28,7 +28,7 @@
                         <?php echo $row['id']; ?>
                     </td>
                     <td><?php echo $row['title']; ?></td>
-                    <td><?php echo $row['value']; ?></td>
+                    <td><?php echo replacePwd($row['title']) ? '*******' : $row['value']; ?></td>
                     <td><?php echo $row['remark']; ?></td>
                     <td>
                         <a href="/systemsetting?id=<?php echo $row['id']; ?>&action=update"><i class="fa fa-pencil"></i></a>
@@ -38,6 +38,17 @@
             <?php endforeach; ?>
             </tbody>
         </table>
+        <?php
+            function replacePwd($title)
+            {
+                $arr = array('mailPwd','smsserverurl','smspwd');
+                if(in_array($title,$arr))
+                {
+                    return true;
+                }
+                return false;
+            }
+        ?>
         <hr>
         <?php
         $isUpdata = false;

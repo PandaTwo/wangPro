@@ -15,6 +15,14 @@ class m_cityaddress extends CI_Model
         $this->load->database();
     }
 
+
+    function getTextAddressByIds($cityids)
+    {
+        $idArr = explode(',',$cityids);
+
+
+    }
+
     function getTextaddress($id)
     {
         if(!$id) return "";
@@ -54,6 +62,16 @@ class m_cityaddress extends CI_Model
         }else{
             return false;
         }
+    }
+
+    /*
+     * 根据parentid获取
+     * */
+    function getbyparentid($parentid)
+    {
+        $this->db->where(array('class_parent_id'=>$parentid));
+        $query = $this->db->get($this->table_name);
+        return $query->result_array();
     }
 
     function getModel($id)

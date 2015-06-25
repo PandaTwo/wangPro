@@ -44,7 +44,7 @@
                         </tr>
                         <tr>
                             <td>开户日期</td>
-                            <td><input type="text" value="" name="start_time" class="form-control" style="width: 150px" onFocus="WdatePicker({isShowClear:true,dateFmt:'yyyy-MM-dd'})" ></td>
+                            <td><input type="text" value="<?php echo date('Y-m-d') ?>" name="start_time" class="form-control" style="width: 150px" onFocus="WdatePicker({isShowClear:true,dateFmt:'yyyy-MM-dd'})" ></td>
                         </tr>
                         <tr>
                             <td>结束日期</td>

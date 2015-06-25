@@ -57,6 +57,7 @@ class login extends CI_Controller
             session_start();
             $_SESSION['authenticated'] = true;
             $_SESSION['adminUserName'] = $username;
+            $_SESSION['login_time'] = time();
             alert('','jump','/');
         }else
         {

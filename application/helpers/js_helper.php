@@ -32,7 +32,4 @@ function alert($tip = "", $type = "", $url = "") {
     }
     $js .= "</script>";
     echo $js;
-    if ($type) {
-        exit();
-    }
 }

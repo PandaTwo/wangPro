@@ -24,7 +24,11 @@
                             </div>
                             <div class="form-group">
                                 <label>时长</label>
-                                <input name="times" type="text" value="<?php echo $updateModel['times']; ?>" class="form-control">
+                                <select name="times" class="form-control">
+                                    <option <?php echo $updateModel['times'] == '年度' ? 'selected' :''  ?> value="年度">年度</option>
+                                    <option <?php echo $updateModel['times'] == '季度' ? 'selected' :''  ?> value="季度">季度</option>
+                                    <option <?php echo $updateModel['times'] == '月度' ? 'selected' :''  ?> value="月度">月度</option>
+                                </select>
                             </div>
 
                             <div class="form-group">
@@ -32,7 +36,10 @@
                                 <?php
                                  $status = $updateModel['status'];
                                 ?>
-                                <input name="status" type="checkbox" <?php echo $status == "1" ? 'checked' : ''?> >
+                                <select name="status" class="form-control">
+                                    <option <?php echo $status == "1" ? 'selected' : ''?>  value="1">启用</option>
+                                    <option <?php echo $status == "0" ? 'selected' : ''?>  value="0">停用</option>
+                                </select>
                             </div>
 
                         </div>

@@ -43,6 +43,7 @@
                     <td><?php echo $row['updateName']; ?></td>
                     <td>
                         <a href="/member/registrationMoeny?id=<?php echo $row['id']; ?>">开户交费</a>
+                        <a onclick="return confirm('确定要删除吗？')" href="/member/deleteregbyid?id=<?php echo $row['id']; ?>">删除</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

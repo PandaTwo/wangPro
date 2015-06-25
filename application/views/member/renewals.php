@@ -7,6 +7,7 @@
     <div class="btn-toolbar list-toolbar">
         <span>姓名：<input type="text" name="username" value="<?php echo isset($_REQUEST['username']) ? $_REQUEST['username'] :''  ?>"> </span>
         <span>手机号码：<input type="text" name="phoneNumber" value="<?php echo isset($_REQUEST['phoneNumber']) ? $_REQUEST['phoneNumber'] :''  ?>"></span>
+        <span>宽带账号：<input type="text" name="adsl_id" value="<?php echo isset($_REQUEST['adsl_id']) ? $_REQUEST['adsl_id'] :''  ?>"></span>
         <input type="submit"  class="btn btn-primary" value="搜索">
         <div class="btn-group">
         </div>
@@ -43,11 +44,11 @@
 
                         <tr>
                             <td>开户日期</td>
-                            <td><input type="text" value="<?php echo date('Y-m-d H:i:s',$sourceModel['start_time']); ?>" name="start_time" class="form-control" style="width: 150px" onFocus="WdatePicker({isShowClear:true,dateFmt:'yyyy-MM-dd'})" ></td>
+                            <td><input type="text" value="<?php echo isset($sourceModel['start_time']) ? date('Y-m-d',intval($sourceModel['start_time'])) : date('Y-m-d',time()); ?>" name="start_time" class="form-control" style="width: 150px" onFocus="WdatePicker({isShowClear:true,dateFmt:'yyyy-MM-dd'})" ></td>
                         </tr>
                         <tr>
                             <td>结束日期</td>
-                            <td><input type="text" value="<?php echo date('Y-m-d H:i:s',$sourceModel['end_time']); ?>" name="end_time" class="form-control" style="width: 150px" onFocus="WdatePicker({isShowClear:true,dateFmt:'yyyy-MM-dd'})" ></td>
+                            <td><input type="text" value="<?php echo isset($sourceModel['end_time']) ? date('Y-m-d',intval($sourceModel['end_time'])) : '' ?>" name="end_time" class="form-control" style="width: 150px" onFocus="WdatePicker({isShowClear:true,dateFmt:'yyyy-MM-dd'})" ></td>
                         </tr>
                         <tr>
                             <td>姓名</td>

@@ -32,7 +32,10 @@
 
                             <div class="form-group">
                                 <label>状态(启用 or 停用)</label>
-                                <input name="status" type="checkbox" value="1" checked>
+                                <select name="status" class="form-control">
+                                    <option  value="1">启用</option>
+                                    <option  value="0">停用</option>
+                                </select>
                             </div>
 
                         </div>

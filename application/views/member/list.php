@@ -49,7 +49,7 @@
                     <td><?php echo $row['serviceSatus']; ?></td>
                     <td><?php echo $row['pName']; ?></td>
                     <td><?php echo date('Y-m-d',intval($row['start_time'])); ?></td>
-                    <td><?php echo $row['up_time']; ?></td>
+                    <td><?php echo $row['up_time'] == '' ? '' : date('Y-m-d',intval($row['up_time']));?></td>
                     <td><?php echo date('Y-m-d',intval($row['end_time'])); ?></td>
                     <td><?php echo $row['username']; ?></td>
                     <td><?php echo $row['sex']; ?></td>
@@ -61,13 +61,13 @@
                     <td><?php echo $row['cNumber']; ?></td>
                     <td><?php echo $row['updateName']; ?></td>
                     <td>
-                        <select onchange="javascript:location.href=this.value;">
+                        <select id="optionlink" class="optionlink">
                             <option value="#">==请选择操作==</option>
                             <option value="/member/edit?id=<?php echo $row['id']; ?>">修改资料</option>
                             <option value="/member/deletebyid?id=<?php echo $row['id']; ?>">删除会员</option>
-                            <option value="#">带宽到期</option>
+                            <option value="/member/timeout?id=<?php echo $row['id']; ?>">带宽到期</option>
                             <option value="/member/renewals?id=<?php echo $row['id']; ?>">带宽续费</option>
-                            <option value="#">发送短信</option>
+                            <option value="/sms/sendsms?id=<?php echo $row['id']; ?>">发送短信</option>
                             <option value="#">查看留言</option>
                         </select>
                     </td>
@@ -82,3 +82,32 @@
         ?>
     </div>
 </div>
+<script>
+    $(function(){
+        $('.optionlink').change(function() {
+           var val = this.value;
+            if(val.indexOf('deletebyid') > -1)
+            {
+                var res = confirm('确定删除当前会员？');
+                if(res)
+                {
+                    window.location.href = val;
+                }else{
+                    return;
+                }
+            }
+            if(val.indexOf('timeout') > -1)
+            {
+                var res = confirm('确定使当前会员到期？');
+                if(res)
+                {
+                    window.location.href = val;
+                }else{
+                    return;
+                }
+            }
+            window.location.href = val;
+        });
+    })
+
+</script>

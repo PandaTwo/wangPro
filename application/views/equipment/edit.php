@@ -30,7 +30,10 @@
 
                             <div class="form-group">
                                 <label>状态(启用 or 停用)</label>
-                                <input name="status" type="checkbox" value="1" <?php echo $updateModel['status'] == '1' ? 'checked' : ''; ?>>
+                                <select name="status" class="form-control">
+                                    <option <?php echo $updateModel['status'] == "1" ? 'selected' : ''?>  value="1">启用</option>
+                                    <option <?php echo $updateModel['status'] == "0" ? 'selected' : ''?>  value="0">停用</option>
+                                </select>
                             </div>
 
                         </div>

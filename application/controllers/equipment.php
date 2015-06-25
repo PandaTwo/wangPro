@@ -37,7 +37,7 @@ class equipment extends MY_Controller
             'company' => $postdata['company'],
             'price' => floatval($postdata['price']),
             'model' => $postdata['model'],
-            'status' => isset($postdata['status']) ? 1 : 0,
+            'status' => $postdata['status']== 1 ? true :false,
             'updateName' => 'admin'
         );
 
@@ -90,7 +90,7 @@ class equipment extends MY_Controller
             'company' => $postdata['company'],
             'price' => floatval($postdata['price']),
             'model' => $postdata['model'],
-            'status' => isset($postdata['status']) ? 1 : 0,
+            'status' => $postdata['status']== 1 ? true :false,
             'updateName' => 'admin'
         );
         $res = $this->m_equipment->addequipment($data);

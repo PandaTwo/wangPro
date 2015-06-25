@@ -34,12 +34,19 @@
                             </div>
                             <div class="form-group">
                                 <label>时长</label>
-                                <input name="times" type="text" value="" class="form-control">
+                                <select name="times" class="form-control">
+                                    <option value="年度">年度</option>
+                                    <option value="季度">季度</option>
+                                    <option value="月度">月度</option>
+                                </select>
                             </div>
 
                             <div class="form-group">
                                 <label>状态(启用 or 停用)</label>
-                                <input name="status" type="checkbox" value="1" checked>
+                                <select name="status" class="form-control">
+                                    <option  value="1">启用</option>
+                                    <option  value="0">停用</option>
+                                </select>
                             </div>
 
                     </div>

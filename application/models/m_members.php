@@ -35,7 +35,7 @@ class m_members extends CI_Model
         if ($searchKeywords) {
             $this->db->where("(m.adsl_id LIKE '$searchKeywords' OR m.username LIKE '$searchKeywords' OR m.phoneNumber LIKE '$searchKeywords')");
         }
-
+        $this->db->order_by('m.id','desc');
         $data['count'] = $this->db->count_all_results();
 
         $this->db->select('m.*,p.PackagesName as pName,e.equipmentName as eName,c.cabinetsNumber as cNumber');
@@ -49,6 +49,7 @@ class m_members extends CI_Model
             $this->db->where("(m.adsl_id LIKE '$searchKeywords' OR m.username LIKE '$searchKeywords' OR m.phoneNumber LIKE '$searchKeywords')");
 
         }
+        $this->db->order_by('m.id','desc');
 
         $this->db->limit($pageSize, ($pageIndex - 1) * $pageSize);
 
@@ -80,9 +81,9 @@ class m_members extends CI_Model
     {
         if (!$data) return false;
 
-        $res = $this->db->insert($this->table_name, $data);
-
-        return $res ? true : false;
+        $this->db->insert($this->table_name, $data);
+        $insert_id = $this->db->insert_id();
+        return $insert_id;
     }
 
     /*
@@ -95,7 +96,7 @@ class m_members extends CI_Model
         $this->db->join($this->packages_table_name . ' p', 'm.packageid = p.id', 'left');
 
         $this->db->where(array('m.serviceSatus' => null));
-
+        $this->db->order_by('id','desc');
         $query = $this->db->get();
 
         return $query->result_array();
@@ -118,6 +119,10 @@ class m_members extends CI_Model
         if (isset($where['phoneNumber']) && !empty($where['phoneNumber'])) {
             $this->db->where('phoneNumber', $where['phoneNumber']);
         }
+        if(isset($where['adsl_id']) && !empty($where['adsl_id']))
+        {
+            $this->db->where('adsl_id', $where['adsl_id']);
+        }
 
         //$this->db->where('serviceSatus', null);
         $query = $this->db->get($this->table_name);
@@ -125,6 +130,15 @@ class m_members extends CI_Model
 
         return null;
 
+    }
+
+    function deletebyid($id)
+    {
+        $this->db->where('id',$id);
+
+        $res = $this->db->delete($this->table_name);
+
+        return $res ? true : false;
     }
 
     /*

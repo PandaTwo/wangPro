@@ -95,6 +95,7 @@ class m_orders extends CI_Model
         if (isset($whereData['orderid']) && !empty($whereData['orderid'])) {
             $this->db->where('o.orderid', $whereData['orderid']);
         }
+        $this->db->order_by('addTime','desc');
         $this->db->limit($pageSize, ($pageIndex - 1) * $pageSize);
 
 
@@ -104,6 +105,14 @@ class m_orders extends CI_Model
         return $data;
 
 
+    }
+
+    function getModelByOrderid($orderid)
+    {
+        $this->db->where('orderid',$orderid);
+        $query = $this->db->get($this->table_name);
+
+        return $query->row_array();
     }
 
     /*

@@ -71,7 +71,8 @@ class smsservice
                 'userid' => null,
                 'status' => '成功',
                 'sendtime' => time(),
-                'smscontent' => $msg
+                'smscontent' => $msg,
+                'phoneNumber' => $phonenumber
             );
             $this->CI->m_smsrecord->insertsmsrecord($data);
         } else {
@@ -79,7 +80,8 @@ class smsservice
                 'userid' => null,
                 'status' => '失败',
                 'sendtime' => time(),
-                'smscontent' => $msg
+                'smscontent' => $msg,
+                'phoneNumber' => $phonenumber
             );
             $this->CI->m_smsrecord->insertsmsrecord($data);
         }
@@ -97,7 +99,8 @@ class smsservice
                 'userid' => $userid,
                 'status' => '成功',
                 'sendtime' => time(),
-                'smscontent' => $msg
+                'smscontent' => $msg,
+                'phoneNumber' => $phonenumber
             );
             $this->CI->m_smsrecord->insertsmsrecord($data);
         } else {
@@ -105,7 +108,8 @@ class smsservice
                 'userid' => $userid,
                 'status' => '失败',
                 'sendtime' => time(),
-                'smscontent' => $msg
+                'smscontent' => $msg,
+                'phoneNumber' => $phonenumber
             );
             $this->CI->m_smsrecord->insertsmsrecord($data);
         }

@@ -64,8 +64,8 @@ class packages extends MY_Controller
             'Speed' => $postdata['Speed'],
             'Price' => floatval($postdata['Price']),
             'times' => $postdata['times'],
-            'status' => isset($postdata['status']) ? 1 : 0,
-            'UpdateName' => 'admin'
+            'status' => $postdata['status'] == 1 ? true :false,
+            'UpdateName' => $this->adminName
         );
 
         $res = $this->m_packages->updateModel($id,$data);
@@ -95,8 +95,8 @@ class packages extends MY_Controller
             'Speed' => $postdata['Speed'],
             'Price' => floatval($postdata['Price']),
             'times' => $postdata['times'],
-            'status' => isset($postdata['status']) ? 1 : 0,
-            'UpdateName' => 'admin'
+            'status' => $postdata['status']== 1 ? true :false,
+            'UpdateName' => $this->adminName
         );
         $res = $this->m_packages->addPackages($data);
 

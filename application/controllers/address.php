@@ -35,7 +35,6 @@ class address extends MY_Controller
             $data['sourceList'] = $this->m_cityaddress->getlistbywhere($where);
         }
 
-
         $this->load->view('template', $data);
     }
 

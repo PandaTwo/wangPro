@@ -28,10 +28,6 @@
                                 <label>密钥</label>
                                 <input name="smssign" type="text" value="<?php echo getval($smssetting,'smssign'); ?>" class="form-control">
                             </div>
-                            <div class="form-group">
-                                <label>短信后缀</label>
-                                <input name="smssuffix" type="text" value="<?php echo getval($smssetting,'smssuffix'); ?>" class="form-control">
-                            </div>
                         </div>
                     </div>
                     <div class="btn-toolbar list-toolbar">
