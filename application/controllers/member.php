@@ -33,8 +33,14 @@ class member extends MY_Controller
         $data['show_menu'] = true;
         $data['menu'] = $this->m_adminmenu->selectWhere();
         $allmembers = $this->m_members->getallmembers($pageIndex, $pageSize, $searchKeywords);
-        $data['sourceList'] = $this->m_members->getallmembers($pageIndex, $pageSize, $searchKeywords);
+        $items = array('objlist' => array());
+        foreach($allmembers['objlist'] as $rows)
+        {
+            $rows['address_text'] = $this->m_cityaddress->getTextAddressByIds($rows['cityid']);
+            array_push($items['objlist'],$rows);
+        }
 
+        $data['sourceList'] = $items;
         $this->pager->set_total($allmembers['count']);
 
         $actual_link = '?';
@@ -295,7 +301,15 @@ class member extends MY_Controller
         $data['content_text'] = 'member/registraionlist';
         $data['show_menu'] = true;
         $data['menu'] = $this->m_adminmenu->selectWhere();
-        $data['sourceList'] = $this->m_members->memberRegistraionList();
+
+        $regList = $this->m_members->memberRegistraionList();
+        $items = array();
+        foreach($regList as $rows)
+        {
+            $rows['address_text'] = $this->m_cityaddress->getTextAddressByIds($rows['cityid']);
+            array_push($items,$rows);
+        }
+        $data['sourceList'] = $items;
 
         $this->load->view('template', $data);
     }

@@ -20,6 +20,11 @@ class m_cityaddress extends CI_Model
     {
         $idArr = explode(',',$cityids);
 
+        $frist = $this->getModel($idArr[0]);
+        $second = $this->getModel($idArr[1]);
+        $third = $this->getModel($idArr[2]);
+
+        return $frist['class_name'].$second['class_name'].$third['class_name'];
 
     }
 

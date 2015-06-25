@@ -56,7 +56,7 @@
                     <td><?php echo $row['cardid']; ?></td>
                     <td><?php echo $row['phoneNumber']; ?></td>
                     <td><?php echo $row['email']; ?></td>
-                    <td><?php echo $row['address']; ?></td>
+                    <td><?php echo $row['address_text'].$row['address']; ?></td>
                     <td><?php echo $row['eName']; ?></td>
                     <td><?php echo $row['cNumber']; ?></td>
                     <td><?php echo $row['updateName']; ?></td>

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50533
 File Encoding         : 65001
 
-Date: 2015-06-25 20:23:33
+Date: 2015-06-26 07:06:07
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -3658,7 +3658,7 @@ CREATE TABLE `packages` (
 -- ----------------------------
 -- Records of packages
 -- ----------------------------
-INSERT INTO `packages` VALUES ('7', '4M包年', '4M', '1300.00', '年度', '', 'admin');
+INSERT INTO `packages` VALUES ('7', '4M包年', '4M', '1300.00', '年度', '\0', 'admin');
 INSERT INTO `packages` VALUES ('8', '8M包年-999包年', '8M', '999.00', '年度', '', 'admin');
 
 -- ----------------------------

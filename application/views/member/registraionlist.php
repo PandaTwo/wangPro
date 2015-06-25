@@ -39,7 +39,7 @@
                     <td><?php echo $row['cardid']; ?></td>
                     <td><?php echo $row['phoneNumber']; ?></td>
                     <td><?php echo $row['email']; ?></td>
-                    <td><?php echo $row['address']; ?></td>
+                    <td><?php echo $row['address_text'].$row['address']; ?></td>
                     <td><?php echo $row['updateName']; ?></td>
                     <td>
                         <a href="/member/registrationMoeny?id=<?php echo $row['id']; ?>">开户交费</a>
