@@ -29,11 +29,7 @@
                     </td>
                     <td><?php echo $row['username']; ?></td>
                     <td>*******</td>
-<<<<<<< HEAD
                     <td><?php echo date('Y-m-d H:i:s',intval($row['createdOn'])); ?></td>
-=======
-                    <td><?php echo $row['createdOn']; ?></td>
->>>>>>> origin/master
                     <td>
                         <a href="/adminuser/edit?id=<?php echo $row['id']; ?>"><i class="fa fa-pencil"></i></a>
                         <a href="/adminuser/deletebyid?id=<?php echo $row['id']; ?>" onclick="return confirm('Are sure del this?');"  role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>

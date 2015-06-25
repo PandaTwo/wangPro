@@ -96,7 +96,6 @@
                     return;
                 }
             }
-<<<<<<< HEAD
             if(val.indexOf('timeout') > -1)
             {
                 var res = confirm('确定使当前会员到期？');
@@ -107,8 +106,6 @@
                     return;
                 }
             }
-=======
->>>>>>> origin/master
             window.location.href = val;
         });
     })

@@ -62,7 +62,6 @@ class member extends MY_Controller
             'status' => true
         );
         $data['packages'] = $this->m_packages->getwhere($packagewhere);
-<<<<<<< HEAD
         //设备
         $equipmentwhere = array(
             'status' => true
@@ -71,10 +70,6 @@ class member extends MY_Controller
 
         $member = $this->m_members->getMemberByid($id);
         $data['member'] = $member;
-=======
-
-        $data['member'] = $this->m_members->getMemberByid($id);
->>>>>>> origin/master
         //$data['sourceList'] = $this->m_adminuser->getall();
         $cityarr = explode(',',$member['cityid']);
         //分别获取省 市 县
@@ -85,7 +80,6 @@ class member extends MY_Controller
         $this->load->view('template', $data);
     }
 
-<<<<<<< HEAD
     function deleteregbyid()
     {
         $id = $this->input->get('id');
@@ -100,8 +94,6 @@ class member extends MY_Controller
         }
     }
 
-=======
->>>>>>> origin/master
     function deletebyid()
     {
         $id = $this->input->get('id');
@@ -117,7 +109,6 @@ class member extends MY_Controller
 
     }
 
-<<<<<<< HEAD
     /*
      * 宽带到期
      * */
@@ -140,8 +131,6 @@ class member extends MY_Controller
 
     }
 
-=======
->>>>>>> origin/master
     /*
      * 用户登记
      * */
@@ -165,18 +154,12 @@ class member extends MY_Controller
     function editpost()
     {
         $postData = $this->input->post();
-<<<<<<< HEAD
-
         if(!$postData['sheng'] || !$postData['shi'] || !$postData['xian'])
         {
             exit('请选择完整的地址');
         }
 
         $cityids = $postData['sheng'].','.$postData['shi'].','.$postData['xian'];
-
-=======
-
->>>>>>> origin/master
         $file1 = $postData['hidfile1'];
         $file2 = $postData['hidfile2'];
 
@@ -212,16 +195,12 @@ class member extends MY_Controller
             'address' => $postData['address'],
             'packageid' => $postData['packageid'],
             'updateName' => $this->adminName,
-<<<<<<< HEAD
             'id' => $postData['id'],
             'cityid'=>$cityids,
             'equipmentid'=>$postData['equipmentid'],
             'equipment_sn'=>$postData['equipment_sn'],
             'adsl_id'=>$postData['adsl_id'],
             'adsl_pwd'=>$postData['serviceSatus']
-=======
-            'id' => $postData['id']
->>>>>>> origin/master
         );
 
         //print_r($model);
@@ -245,7 +224,6 @@ class member extends MY_Controller
             alert('参数错误', 'jump', '/member/registraion');
         }
 
-<<<<<<< HEAD
         if(!$postData['sheng'] || !$postData['shi'] || !$postData['xian'])
         {
             exit('请选择完整的地址');
@@ -253,8 +231,6 @@ class member extends MY_Controller
 
         $cityids = $postData['sheng'].','.$postData['shi'].','.$postData['xian'];
 
-=======
->>>>>>> origin/master
         $file1 = '';
         $file2 = '';
 
@@ -283,12 +259,8 @@ class member extends MY_Controller
             'email' => $postData['email'],
             'address' => $postData['address'],
             'packageid' => $postData['packageid'],
-<<<<<<< HEAD
             'updateName' => $this->adminName,
             'cityid' => $cityids
-=======
-            'updateName' => $this->adminName
->>>>>>> origin/master
         );
 
         $res = $this->m_members->addmembers($model);
@@ -540,11 +512,8 @@ class member extends MY_Controller
                 $smscontent = '请查阅邮箱，已将（' . $model['username'] . '）用户的续费资料发送传达，请及时续费。成功后将续费截图回复邮件。';
                 $this->smsservice->sendmsg($operatorphonenumber, $smscontent, $model['id']);
                 //发送邮件
-<<<<<<< HEAD
                 $this->mail->sendMail($operatoremail, $model['username'] . '续费宽带', $this->renewalsMailTemp($model));
-=======
-                $this->mail->sendMail($operatoremail, $model['username'] . '开户资料', $this->renewalsMailTemp($model));
->>>>>>> origin/master
+
 
                 //跳转到续费打单界面
                 header('Location:/member/renewalstemp?id=' . $postData['id'] . '&orderid=' . $postData['orderid'] . '&amount=' . $package[0]['Price'] . '&packagesName=' . $postData['packagesName']);
