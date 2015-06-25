@@ -50,6 +50,7 @@
         </tr>
         <tr>
             <td>项<br>目</td>
+<<<<<<< HEAD
             <td colspan="5"><?php echo $_GET['packagesName']; ?>，到期时间：<?php echo date('Y年-m月-d日',intval($data['end_time'])); ?></td>
         </tr>
     </table>
@@ -69,6 +70,9 @@
             <td>
                 收款员：张
             </td>
+=======
+            <td colspan="5"><?php echo $_GET['packagesName']; ?>，到期时间：<?php echo date('Y年-m月-d日',strtotime($data['end_time'])); ?></td>
+>>>>>>> origin/master
         </tr>
     </table>
 </div>

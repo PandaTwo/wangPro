@@ -32,6 +32,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
+<<<<<<< HEAD
                                 <label>设备名称</label>
                                 <select id="equipmentid" name="equipmentid" class="form-control">
                                     <?php foreach($equipments as $rows): ?>
@@ -58,6 +59,10 @@
                                     <option <?php echo $member['serviceSatus']=='暂停'?'selected':'' ?> value="暂停">暂停</option>
                                     <option <?php echo $member['serviceSatus']=='到期'?'selected':'' ?> value="到期">到期</option>
                                 </select>
+=======
+                                <label>身份证号码</label>
+                                <input name="cardid" type="text" value="<?php echo $member['cardid'] ?>" class="form-control" required>
+>>>>>>> origin/master
                             </div>
                             <div class="form-group">
                                 <label>手机</label>
@@ -72,6 +77,7 @@
                             ?>
                             <div class="form-group">
                                 <label>安装地址</label>
+<<<<<<< HEAD
                                 <select id="sheng" name="sheng">
                                     <option value="0">==请选择==</option>
                                     <?php foreach($sheng as $row): ?>
@@ -90,6 +96,8 @@
                                         <option <?php echo $row['class_id'] == $cityarr[2] ? 'selected' : '' ?> <?php echo $row['class_id'] ?> value="<?php echo $row['class_id'] ?>"><?php echo $row['class_name'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
+=======
+>>>>>>> origin/master
                                 <input name="address" type="text" value="<?php echo $member['address'] ?>" class="form-control" required>
                             </div>
                             <div class="form-group">

@@ -25,6 +25,7 @@
 </head>
 <body>
 <div style="width: 950px;height: 600px;margin: 0 auto;">
+<<<<<<< HEAD
     <!-- Table goes in the document BODY -->
     <table class="gridtable">
         <tr>
@@ -74,6 +75,45 @@
             </td>
         </tr>
     </table>
+=======
+<!-- Table goes in the document BODY -->
+<table class="gridtable">
+    <tr>
+        <td colspan="6" style="text-align: center">收据</td>
+    </tr>
+    <tr>
+        <td colspan="3">订单编号：<?php echo $data['orderid']; ?></td>
+        <td colspan="3"><?php echo date('Y-m-d H:i:s') ?></td>
+    </tr>
+    <tr>
+        <td>用户名称</td>
+        <td><?php echo $data['username']; ?></td>
+        <td>手机号</td>
+        <td><?php echo $data['orderid']; ?></td>
+        <td>宽带账号</td>
+        <td><?php echo $data['adsl_id']; ?></td>
+    </tr>
+    <tr>
+        <td>合计金额</td>
+        <td colspan="2"><?php echo $data['amountcn']; ?></td>
+        <td><?php echo $data['end_time']; ?></td>
+        <td>密码</td>
+        <td><?php echo $data['adsl_pwd']; ?></td>
+    </tr>
+    <tr>
+        <td>项<br>目</td>
+        <td colspan="5">
+            <?php echo $_GET['packagesName']; ?>，到期时间：<?php echo date('Y年-m月-d日',strtotime($data['end_time'])); ?>
+        </td>
+    </tr>
+</table>
+<div>
+    注：1、用户到期后一个月内未续费，自动销户；2、光猫保修三个月；3、使用过程出现网络异常请电本服务电话；
+</div>
+    <div>
+        服务电话:18666034393&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;收款地址：上陈有线电视收费网点&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;收款员：张
+    </div>
+>>>>>>> origin/master
 </div>
 </body>
 </html>
