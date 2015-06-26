@@ -64,7 +64,7 @@ class adminmenu extends MY_Controller
             'parentId'=>$postData['parentId'],
             'URL'=>$postData['URL'],
             'sort'=>$postData['sort'],
-            'isshow'=>isset($postData['isshow']) ? true : false
+            'isshow'=>isset($postData['isshow']) ? 1 : 0
         );
 
         $res = $this->m_adminmenu->addadminmenu($data);

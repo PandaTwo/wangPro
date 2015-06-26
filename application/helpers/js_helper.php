@@ -5,7 +5,8 @@
  * @param  $type 设置类型 close = 关闭 ，back=返回 ，refresh=提示重载，jump提示并跳转url
  * @param  $url  跳转url
  */
-function alert($tip = "", $type = "", $url = "") {
+function alert($tip = "", $type = "", $url = "")
+{
     $js = '<script type="text/javascript" charset="utf-8">';
     if ($tip)
         $js .= "alert('" . $tip . "');";
@@ -31,5 +32,14 @@ function alert($tip = "", $type = "", $url = "") {
             break;
     }
     $js .= "</script>";
+    echo $js;
+}
+
+function windowOpen($url)
+{
+    $js = '<script type="text/javascript" charset="utf-8">';
+    $js .= 'window.open("'.$url.'");';
+    $js .= "</script>";
+
     echo $js;
 }

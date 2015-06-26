@@ -25,6 +25,7 @@ class member extends MY_Controller
 
     function index()
     {
+        windowOpen('/news');
         $pageIndex = isset($_REQUEST['p']) ? $_REQUEST['p'] : 1;
         $pageSize = 10;
         $searchKeywords = isset($_REQUEST['searchKeywords']) ? $_REQUEST['searchKeywords'] : '';
@@ -65,12 +66,12 @@ class member extends MY_Controller
         $data['show_menu'] = true;
         $data['menu'] = $this->m_adminmenu->selectWhere();
         $packagewhere = array(
-            'status' => true
+            'status' => 1
         );
         $data['packages'] = $this->m_packages->getwhere($packagewhere);
         //设备
         $equipmentwhere = array(
-            'status' => true
+            'status' => 1
         );
         $data['equipments'] = $this->m_equipment->getallbywhere($equipmentwhere);
 
@@ -146,7 +147,7 @@ class member extends MY_Controller
         $data['show_menu'] = true;
         $data['menu'] = $this->m_adminmenu->selectWhere();
         $packagewhere = array(
-            'status' => true
+            'status' => 1
         );
         $data['packages'] = $this->m_packages->getwhere($packagewhere);
         $data['firststepaddress'] = $this->m_cityaddress->getfiststepAll();
@@ -326,12 +327,12 @@ class member extends MY_Controller
         $data['menu'] = $this->m_adminmenu->selectWhere();
         //套餐
         $packagewhere = array(
-            'status' => true
+            'status' => 1
         );
         $data['packages'] = $this->m_packages->getwhere($packagewhere);
         //设备
         $equipmentwhere = array(
-            'status' => true
+            'status' => 1
         );
         $data['equipments'] = $this->m_equipment->getallbywhere($equipmentwhere);
         //机柜
@@ -520,8 +521,11 @@ class member extends MY_Controller
                 $operatoremail = $this->getsetting('operatoremail');
                 $operatorphonenumber = $this->getsetting('operatorphonenumber');
                 //获取用户信息
-                $model = $this->m_members->getMemberByid($res);
+
+                $model = $this->m_members->getMemberByid($updateArray['id']);
                 $model['PackagesName'] = $package[0]['PackagesName'];
+
+                //print_r($model);
                 //发送短信
                 $smscontent = '请查阅邮箱，已将（' . $model['username'] . '）用户的续费资料发送传达，请及时续费。成功后将续费截图回复邮件。';
                 $this->smsservice->sendmsg($operatorphonenumber, $smscontent, $model['id']);
