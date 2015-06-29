@@ -1,0 +1,7 @@
+初始数据都在根目录的：wang_db.sql文件里面，需要先新建数据库然后执行sql文件就可以了。
+
+修改数据库连接文件在："\application\config\database.php" 修改里面的下面内容：
+
+$db['default']['username'] = 'root';//用户名
+$db['default']['password'] = '123456';//密码
+$db['default']['database'] = 'wang_db';//用户名

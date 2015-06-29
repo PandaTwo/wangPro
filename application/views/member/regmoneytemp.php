@@ -45,7 +45,7 @@
         <tr>
             <td>合计金额</td>
             <td colspan="2"><?php echo $data['amountcn']; ?></td>
-            <td><?php echo $_GET['amount']; ?></td>
+            <td><?php echo $data['totalAmount']; ?></td>
             <td>密码</td>
             <td><?php echo $data['adsl_pwd']; ?></td>
         </tr>
@@ -53,6 +53,10 @@
             <td>项<br>目</td>
             <td colspan="5">
                 <?php echo $_GET['packagesName']; ?>，到期时间：<?php echo date('Y年-m月-d日', intval($data['end_time'])); ?>
+                <?php if(isset($data['equipmentName'])): ?>
+                <br>
+                    <?php echo $data['equipmentName']; ?>,价格:<?php echo $data['equipmentPrice']; ?>
+                <?php endif; ?>
             </td>
         </tr>
     </table>

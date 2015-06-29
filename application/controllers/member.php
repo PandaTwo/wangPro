@@ -25,7 +25,6 @@ class member extends MY_Controller
 
     function index()
     {
-        windowOpen('/news');
         $pageIndex = isset($_REQUEST['p']) ? $_REQUEST['p'] : 1;
         $pageSize = 10;
         $searchKeywords = isset($_REQUEST['searchKeywords']) ? $_REQUEST['searchKeywords'] : '';
@@ -415,9 +414,23 @@ class member extends MY_Controller
 
         $id = $getData['id'];
         $orderid = $getData['orderid'];
-        $amountcn = rmb_format(intval($getData['amount']));
-
+        //获取设备
         $member = $this->m_members->getMemberByid($id);
+        $equipment = array();
+        if(isset($member['equipmentid']) && !empty($member['equipmentid']))
+        {
+            $equipment = $this->m_equipment->getModel($member['equipmentid']);
+        }
+        $totalAamount = intval($getData['amount']);
+        if($equipment)
+        {
+            $totalAamount = intval($getData['amount']) + intval($equipment['price']);
+            $amountcn = rmb_format($totalAamount);
+
+            $member['equipmentName'] = $equipment['equipmentName'];
+            $member['equipmentPrice'] = $equipment['price'];
+        }
+        $member['totalAmount'] = $totalAamount;
         $order = $this->m_orders->getModelByOrderid($orderid);
         $member['amountcn'] = $amountcn;
         $data['data'] = array_merge($member, $order);
@@ -551,6 +564,7 @@ class member extends MY_Controller
 
         $id = $getData['id'];
         $orderid = $getData['orderid'];
+
         $amountcn = rmb_format(intval($getData['amount']));
 
         $member = $this->m_members->getMemberByid($id);
