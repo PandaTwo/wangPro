@@ -80,7 +80,7 @@
     </table>
     <table style="width: 100%">
         <tr>
-            <td><input type="button" value="打印" /></td>
+            <td><input type="button" value="打印" onclick="window.print()" /></td>
             <td><input type="button" value="返回列表" onclick="window.location.href='/member'" /> </td>
         </tr>
     </table>

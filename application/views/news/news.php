@@ -34,15 +34,15 @@
                     <td><?php echo $row['newstitle'] ?></td>
                     <td><?php echo date('Y-m-d',intval($row['addtime']))  ?></td>
                     <td>
-                        <a href=""><i class="fa fa-pencil"></i></a>
-                        <a href="/equipment/deletebyid?id=" onclick="return confirm('Are sure del this?');"
+                        <a href="/news/edit?id=<?php echo $row['id'] ?>"><i class="fa fa-pencil"></i></a>
+                        <a href="/news/deletebyid?id=<?php echo $row['id'] ?>" onclick="return confirm('Are sure del this?');"
                            role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
                     </td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
         </table>
-
+        <?php echo $html; ?>
         <?php
         $this->load->view('include/content_footer.html');
         ?>
