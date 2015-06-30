@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50533
 File Encoding         : 65001
 
-Date: 2015-06-26 18:03:25
+Date: 2015-06-30 08:43:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,37 +25,37 @@ CREATE TABLE `adminmenu` (
   `parentId` int(11) DEFAULT NULL COMMENT '父类id',
   `URL` varchar(255) NOT NULL,
   `sort` int(11) DEFAULT NULL COMMENT '排序',
-  `isshow` int(8) DEFAULT NULL COMMENT '是否显示',
+  `isshow` bit(1) DEFAULT NULL COMMENT '是否显示',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of adminmenu
 -- ----------------------------
-INSERT INTO `adminmenu` VALUES ('1', '会员管理', '0', '#', '1', '1');
-INSERT INTO `adminmenu` VALUES ('2', '带宽管理', '0', '#', '2', '1');
-INSERT INTO `adminmenu` VALUES ('3', '信息管理', '0', '#', '3', '1');
-INSERT INTO `adminmenu` VALUES ('6', '系统管理', '0', '#', '4', '1');
-INSERT INTO `adminmenu` VALUES ('7', '地址管理', '0', '#', '5', '1');
-INSERT INTO `adminmenu` VALUES ('8', '财务管理', '0', '#', '6', '1');
-INSERT INTO `adminmenu` VALUES ('9', '套餐设置', '2', '/packages/', '1', '1');
-INSERT INTO `adminmenu` VALUES ('10', '管理员设置', '6', '/adminuser/', '1', '1');
-INSERT INTO `adminmenu` VALUES ('11', '后台菜单设置', '6', '/adminmenu/', '2', '1');
-INSERT INTO `adminmenu` VALUES ('12', '机柜设置', '2', '/cabinets', '2', '1');
-INSERT INTO `adminmenu` VALUES ('13', '设备设置', '2', '/equipment', '3', '1');
-INSERT INTO `adminmenu` VALUES ('14', '系统设置', '6', '/systemsetting', '3', '1');
-INSERT INTO `adminmenu` VALUES ('15', '地址列表', '7', '/address', '1', '1');
-INSERT INTO `adminmenu` VALUES ('16', '收费记录', '8', '/payrecord', '1', '1');
-INSERT INTO `adminmenu` VALUES ('17', '公告管理', '3', '/news', '1', '1');
-INSERT INTO `adminmenu` VALUES ('18', '用户登记', '1', '/member/registraion', '3', '1');
-INSERT INTO `adminmenu` VALUES ('19', '登记列表', '1', '/member/registraionlist', '3', '1');
-INSERT INTO `adminmenu` VALUES ('20', '会员列表', '1', '/member', '3', '1');
-INSERT INTO `adminmenu` VALUES ('21', '续费打单', '1', '/member/renewals', '4', '1');
-INSERT INTO `adminmenu` VALUES ('22', '短信设置', '6', '/sms/smssetting', '4', '1');
-INSERT INTO `adminmenu` VALUES ('23', '发送记录', '6', '/sms/', '5', '1');
-INSERT INTO `adminmenu` VALUES ('24', '发送短信', '6', '/sms/sendsms', '6', '1');
-INSERT INTO `adminmenu` VALUES ('25', '邮件设置', '6', '/mailsetting/', '7', '1');
-INSERT INTO `adminmenu` VALUES ('26', '邮件记录', '6', '/mailrecord/', '8', '1');
+INSERT INTO `adminmenu` VALUES ('1', '会员管理', '0', '#', '1', '');
+INSERT INTO `adminmenu` VALUES ('2', '带宽管理', '0', '#', '2', '');
+INSERT INTO `adminmenu` VALUES ('3', '信息管理', '0', '#', '3', '');
+INSERT INTO `adminmenu` VALUES ('6', '系统管理', '0', '#', '4', '');
+INSERT INTO `adminmenu` VALUES ('7', '地址管理', '0', '#', '5', '');
+INSERT INTO `adminmenu` VALUES ('8', '财务管理', '0', '#', '6', '');
+INSERT INTO `adminmenu` VALUES ('9', '套餐设置', '2', '/packages/', '1', '');
+INSERT INTO `adminmenu` VALUES ('10', '管理员设置', '6', '/adminuser/', '1', '');
+INSERT INTO `adminmenu` VALUES ('11', '后台菜单设置', '6', '/adminmenu/', '2', '');
+INSERT INTO `adminmenu` VALUES ('12', '机柜设置', '2', '/cabinets', '2', '');
+INSERT INTO `adminmenu` VALUES ('13', '设备设置', '2', '/equipment', '3', '');
+INSERT INTO `adminmenu` VALUES ('14', '系统设置', '6', '/systemsetting', '3', '');
+INSERT INTO `adminmenu` VALUES ('15', '地址列表', '7', '/address', '1', '');
+INSERT INTO `adminmenu` VALUES ('16', '收费记录', '8', '/payrecord', '1', '');
+INSERT INTO `adminmenu` VALUES ('17', '公告管理', '3', '/news', '1', '');
+INSERT INTO `adminmenu` VALUES ('18', '用户登记', '1', '/member/registraion', '3', '');
+INSERT INTO `adminmenu` VALUES ('19', '登记列表', '1', '/member/registraionlist', '3', '');
+INSERT INTO `adminmenu` VALUES ('20', '会员列表', '1', '/member', '3', '');
+INSERT INTO `adminmenu` VALUES ('21', '续费打单', '1', '/member/renewals', '4', '');
+INSERT INTO `adminmenu` VALUES ('22', '短信设置', '6', '/sms/smssetting', '4', '');
+INSERT INTO `adminmenu` VALUES ('23', '发送记录', '6', '/sms/', '5', '');
+INSERT INTO `adminmenu` VALUES ('24', '发送短信', '6', '/sms/sendsms', '6', '');
+INSERT INTO `adminmenu` VALUES ('25', '邮件设置', '6', '/mailsetting/', '7', '');
+INSERT INTO `adminmenu` VALUES ('26', '邮件记录', '6', '/mailrecord/', '8', '');
 
 -- ----------------------------
 -- Table structure for adminuser
@@ -68,7 +68,7 @@ CREATE TABLE `adminuser` (
   `createdOn` int(11) NOT NULL,
   `role` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of adminuser
@@ -86,7 +86,7 @@ CREATE TABLE `cabinets` (
   `address` varchar(255) DEFAULT NULL COMMENT '机柜地址',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of cabinets
@@ -3530,7 +3530,7 @@ CREATE TABLE `emailrecord` (
   `addtime` int(11) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of emailrecord
@@ -3559,15 +3559,15 @@ CREATE TABLE `equipment` (
   `company` varchar(255) DEFAULT NULL COMMENT '厂家',
   `price` decimal(10,0) DEFAULT NULL COMMENT '价格',
   `model` varchar(255) DEFAULT NULL COMMENT '型号',
-  `status` int(8) DEFAULT NULL COMMENT '状态',
+  `status` bit(1) DEFAULT NULL COMMENT '状态',
   `updateName` varchar(255) DEFAULT NULL COMMENT '操作人',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of equipment
 -- ----------------------------
-INSERT INTO `equipment` VALUES ('4', '极路由', '极路由', '280', '1', '1', 'admin');
+INSERT INTO `equipment` VALUES ('4', '极路由', '极路由', '280', '1', '', 'admin');
 
 -- ----------------------------
 -- Table structure for members
@@ -3597,14 +3597,35 @@ CREATE TABLE `members` (
   `updateName` varchar(255) DEFAULT NULL COMMENT '操作人',
   `cityid` varchar(11) DEFAULT NULL COMMENT '省,市,县',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of members
 -- ----------------------------
 INSERT INTO `members` VALUES ('17', 'adsl001', 'adsl001', '正常', '7', '1435161600', '1435203623', '1529856000', null, '张小拍', '男', '444444444444444444', '2015-06-25100152-0.jpeg', '2015-06-25100152-1.jpg', '18565674942', 'paipat@vip.qq.com', '城东中学', '4', '123', '3', 'admin', '6,81,752');
 INSERT INTO `members` VALUES ('18', null, null, null, '7', null, null, null, null, '熊猫', '男', '430321199098091234', '2015-06-25112329-0.jpg', '2015-06-25112331-1.jpg', '13266873852', 'panda_it@qq.com', '深圳市南山区高新科技园中区一路腾讯大厦', null, null, null, 'admin', '6,81,752');
-INSERT INTO `members` VALUES ('19', 'adsl_username', 'adslpwd', '正常', '7', '1435161600', '1435288289', '1435593600', null, '陈光标', '男', '112312345345345345345', '2015-06-25162531-0.jpg', '2015-06-25162531-1.jpg', '135190019001', 'guanbiao@qq.com', '光标家里的地址', '4', '123123123123123123', '3', 'admin', '6,81,752');
+INSERT INTO `members` VALUES ('19', 'adsl_username', 'adslpwd', '正常', '7', '1435161600', null, '1435593600', null, '陈光标', '男', '112312345345345345345', '2015-06-25162531-0.jpg', '2015-06-25162531-1.jpg', '135190019001', 'guanbiao@qq.com', '光标家里的地址', '4', '123123123123123123', '3', 'admin', '6,81,752');
+
+-- ----------------------------
+-- Table structure for news
+-- ----------------------------
+DROP TABLE IF EXISTS `news`;
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `newstype` int(255) DEFAULT NULL,
+  `newstitle` varchar(255) DEFAULT NULL,
+  `newscontent` text,
+  `addtime` int(11) DEFAULT NULL,
+  `status` int(255) DEFAULT NULL,
+  `isrecommend` int(255) DEFAULT NULL,
+  `istop` int(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of news
+-- ----------------------------
+INSERT INTO `news` VALUES ('1', '1', 'test', '<p>test</p>', '1435593600', '1', null, null);
 
 -- ----------------------------
 -- Table structure for orders
@@ -3618,7 +3639,7 @@ CREATE TABLE `orders` (
   `addTime` int(11) DEFAULT NULL,
   `updateName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of orders
@@ -3639,7 +3660,6 @@ INSERT INTO `orders` VALUES ('13', '20150625101626', '17', '续费', '1435198586
 INSERT INTO `orders` VALUES ('14', '20150625111141', '17', '续费', '1435201901', 'admin');
 INSERT INTO `orders` VALUES ('15', '20150625114023', '17', '续费', '1435203623', 'admin');
 INSERT INTO `orders` VALUES ('16', '20150625162722', '19', '交费', '1435220842', 'admin');
-INSERT INTO `orders` VALUES ('17', '20150626111129', '19', '续费', '1435288289', 'admin');
 
 -- ----------------------------
 -- Table structure for packages
@@ -3651,16 +3671,16 @@ CREATE TABLE `packages` (
   `Speed` varchar(255) DEFAULT NULL,
   `Price` float(8,2) DEFAULT NULL,
   `times` varchar(255) DEFAULT NULL,
-  `status` int(8) DEFAULT NULL,
+  `status` bit(1) DEFAULT NULL,
   `UpdateName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of packages
 -- ----------------------------
-INSERT INTO `packages` VALUES ('7', '4M包年', '4M', '1300.00', '年度', '1', 'admin');
-INSERT INTO `packages` VALUES ('8', '8M包年-999包年', '8M', '999.00', '年度', '0', 'admin');
+INSERT INTO `packages` VALUES ('7', '4M包年', '4M', '1300.00', '年度', '\0', 'admin');
+INSERT INTO `packages` VALUES ('8', '8M包年-999包年', '8M', '999.00', '年度', '', 'admin');
 
 -- ----------------------------
 -- Table structure for setting
@@ -3673,7 +3693,7 @@ CREATE TABLE `setting` (
   `group` varchar(255) DEFAULT NULL,
   `remark` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of setting
@@ -3711,7 +3731,7 @@ CREATE TABLE `smsrecord` (
   `smscontent` varchar(255) DEFAULT NULL,
   `phoneNumber` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of smsrecord
