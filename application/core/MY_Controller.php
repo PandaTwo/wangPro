@@ -31,10 +31,12 @@ class MY_Controller extends CI_Controller
         if( !isset( $_SESSION['authenticated'] ) || time() - $_SESSION['login_time'] > 1200) {
             unset($_SESSION["authenticated"]);  // where $_SESSION["nome"] is your own variable. if you do not have one use only this as follow **session_unset();**
             unset($_SESSION['adminUserName']);
-            alert('', 'jump', '/login/');
+            header('Location:/login/');
+            //alert('', 'jump', '/login/');
         }
         if (!isset($_SESSION['authenticated'])) {
-            alert('', 'jump', '/login/');
+            header('Location:/login/');
+            //alert('', 'jump', '/login/');
         }
         $this->adminName = $_SESSION['adminUserName'];
     }
@@ -44,14 +46,39 @@ class MY_Controller extends CI_Controller
      * */
     function regMailTemp($model)
     {
-        $imghostpath = 'http://'.$_SERVER['HTTP_HOST'].'/static/uploads/';
+        $baseFilePath = '/static/uploads/';
+        $imghostpath = 'http://'.$_SERVER['HTTP_HOST'].$baseFilePath;
+
+        $imgInfo = array();
+        $imgInfo1 = array();
+
+        //获取图片大小
+        if(isset($model['cardpic']))
+        {
+            $imgInfo = getimagesize($baseFilePath.$model['cardpic']);
+        }
+
+        if(isset($model['cardpic1']))
+        {
+            $imgInfo1 = getimagesize($baseFilePath.$model['cardpic1']);
+        }
+
         $htmltemp = '';
         $htmltemp .= '<table>';
         $htmltemp .= '<tr><td>姓名</td><td>' . $model['username'] . '</td></tr>';
         $htmltemp .= '<tr><td>身份证</td><td>' . $model['cardid'] . '</td></tr>';
         $htmltemp .= '<tr><td>地址</td><td>' . $model['address'] . '</td></tr>';
-        $htmltemp .= '<tr><td>身份证正面</td><td><a target="_blank" href="' .$imghostpath . $model['cardpic'] . '">点击查看</a></td></tr>';
-        $htmltemp .= '<tr><td>身份证反面</td><td><a target="_blank" href="' .$imghostpath . $model['cardpic1'] . '">点击查看</a></td></tr>';
+
+        if(count($imgInfo) > 0)
+        {
+            $htmltemp .= '<tr><td>身份证正面</td><td><img style="width:'.$imgInfo[0].'px;height: '.$imgInfo[0].'px" src="' .$imghostpath . $model['cardpic'] . '"></td></tr>';
+        }
+        if(count($imgInfo1) > 0)
+        {
+            $htmltemp .= '<tr><td>身份证反面</td><td><img style="width:'.$imgInfo1[0].'px;height: '.$imgInfo1[0].'px" src="' .$imghostpath . $model['cardpic1'] . '"></td></tr>';
+        }
+        //$htmltemp .= '<tr><td>身份证正面</td><td><a target="_blank" href="' .$imghostpath . $model['cardpic'] . '">点击查看</a></td></tr>';
+        //$htmltemp .= '<tr><td>身份证反面</td><td><a target="_blank" href="' .$imghostpath . $model['cardpic1'] . '">点击查看</a></td></tr>';
         $htmltemp .= '</table>';
 
         return $htmltemp;

@@ -9,3 +9,17 @@
 </script>
 </body>
 </html>
+<script>
+    $(function(){
+        $("#showmenu").click(function(){
+            $(".sidebar-nav").toggle("slow",function(){
+                if($('.sidebar-nav').css('display') == 'none'){
+                    $('.content').css('margin-left','0');
+                } else {
+                    $('.content').css('margin-left','125px');
+                }
+            });
+
+        })
+    });
+</script>

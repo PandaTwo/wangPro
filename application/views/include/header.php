@@ -80,6 +80,9 @@
     <?php if(isset($_SESSION['adminUserName'])):?>
     <div class="navbar-collapse collapse" style="height: 1px;">
         <ul id="main-menu" class="nav navbar-nav navbar-right">
+            <li>
+                <a href="#" id="showmenu">显示/隐藏侧栏</a>
+            </li>
             <li class="dropdown hidden-xs">
                 <a href="#" class="dropdown-toggle">
                 <?php echo date('Y年-m月-d日 H:i') ?>

@@ -26,7 +26,7 @@
                 <th>到期日期</th>
                 <th>姓名</th>
                 <th>性别</th>
-                <th>身份证</th>
+<!--                <th>身份证</th>-->
                 <th>手机</th>
                 <th>邮箱</th>
                 <th>安装地址</th>
@@ -53,7 +53,7 @@
                     <td><?php echo date('Y-m-d',intval($row['end_time'])); ?></td>
                     <td><?php echo $row['username']; ?></td>
                     <td><?php echo $row['sex']; ?></td>
-                    <td><?php echo $row['cardid']; ?></td>
+<!--                    <td>--><?php //echo $row['cardid']; ?><!--</td>-->
                     <td><?php echo $row['phoneNumber']; ?></td>
                     <td><?php echo $row['email']; ?></td>
                     <td><?php echo $row['address_text'].$row['address']; ?></td>

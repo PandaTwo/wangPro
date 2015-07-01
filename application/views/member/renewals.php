@@ -101,7 +101,7 @@
                         <tr>
                             <td>续至日期</td>
                             <td>
-                            <input type="text" value="" name="end_time1" class="form-control" style="width: 150px" onFocus="WdatePicker({isShowClear:true,dateFmt:'yyyy-MM-dd'})" >
+                            <input type="text" value="" id="end_time1" name="end_time1" class="form-control" style="width: 150px" onFocus="WdatePicker({isShowClear:true,dateFmt:'yyyy-MM-dd'})" >
                             </td>
                         </tr>
                         </tbody>
@@ -116,13 +116,30 @@
         ?>
     </div>
 </div>
+<input type="hidden" id="oneyear" value="<?php echo  date('Y-m-d',strtotime('+1 years',isset($sourceModel['end_time']) ? intval($sourceModel['end_time']) : time()))   ?>">
+<input type="hidden" id="oneMonth" value="<?php echo  date('Y-m-d',strtotime('+1 months',isset($sourceModel['end_time']) ? intval($sourceModel['end_time']) : time()))   ?>">
+<input type="hidden" id="threeMonth" value="<?php echo  date('Y-m-d',strtotime('+3 months',isset($sourceModel['end_time']) ? intval($sourceModel['end_time']) : time()))   ?>">
 <script>
     $('#tab').validator();
 
     $(function(){
         $("#packageid").change(function(){
             var option = $('option:selected', this).attr('Price');
-           $("#span_price").html(option) ;
+            $("#span_price").html(option) ;
+            var opText = $("#packageid option:selected").text();
+            if(opText.indexOf('年') > -1)
+            {
+                $('#end_time1').val($('#oneyear').val());
+            }
+            if(opText.indexOf('月') > -1)
+            {
+                $('#end_time1').val($('#oneMonth').val());
+            }
+            if(opText.indexOf('季') > -1)
+            {
+                $('#end_time1').val($('#threeMonth').val());
+            }
         });
     })
 </script>
+

@@ -36,6 +36,7 @@
                             <td>套餐</td>
                             <td>
                                 <select id="packageid" name="packageid" class="form-control" required>
+                                    <option value="">==请选择套餐==</option>
                                     <?php foreach($packages as $rows): ?>
                                         <option value="<?php echo $rows['id']; ?>"><?php echo $rows['PackagesName']; ?></option>
                                     <?php endforeach;?>
@@ -48,7 +49,7 @@
                         </tr>
                         <tr>
                             <td>结束日期</td>
-                            <td><input type="text" value="" name="end_time" class="form-control" style="width: 150px" onFocus="WdatePicker({isShowClear:true,dateFmt:'yyyy-MM-dd'})" ></td>
+                            <td><input type="text" value="" id="end_time" name="end_time" class="form-control" style="width: 150px" onFocus="WdatePicker({isShowClear:true,dateFmt:'yyyy-MM-dd'})" ></td>
                         </tr>
                         <tr>
                             <td>姓名</td>
@@ -132,6 +133,29 @@
         ?>
     </div>
 </div>
+<input type="hidden" id="oneyear" value="<?php echo  date('Y-m-d',strtotime('+1 years',time()))   ?>">
+<input type="hidden" id="oneMonth" value="<?php echo  date('Y-m-d',strtotime('+1 months',time()))   ?>">
+<input type="hidden" id="threeMonth" value="<?php echo  date('Y-m-d',strtotime('+3 months',time()))   ?>">
 <script>
     $('#tab').validator();
+
+    $(function(){
+
+        $('#packageid').on('change', function() {
+            var opText = $("#packageid option:selected").text();
+            if(opText.indexOf('年') > -1)
+            {
+                $('#end_time').val($('#oneyear').val());
+            }
+            if(opText.indexOf('月') > -1)
+            {
+                $('#end_time').val($('#oneMonth').val());
+            }
+            if(opText.indexOf('季') > -1)
+            {
+                $('#end_time').val($('#threeMonth').val());
+            }
+        });
+
+    })
 </script>
