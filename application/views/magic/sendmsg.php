@@ -5,12 +5,18 @@
         </div>
         <div class="main-content">
             <div class="btn-toolbar list-toolbar">
-                <input type="submit" class="btn btn-primary" onclick="" value="确定发送">
+                <?php if(date('Y-m-d',time()) != date('Y-m-d',$lastCheckMagic)){ ?>
+                <input type="submit" class="btn btn-primary" value="确定发送">
+                <?php }else{?>
+                <p>
+                    今天已经检查完成。
+                </p>
+                <?php }  ?>
                 <div class="btn-group">
                 </div>
             </div>
             <p>
-                点击按钮后请等待页面跳转。。。
+                <?php echo isset($msg) ? $msg : '点击按钮后请等待页面跳转。。。'; ?>
             </p>
             <?php
             $this->load->view('include/content_footer.html');

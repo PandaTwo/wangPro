@@ -1,0 +1,1 @@
+INSERT INTO `setting` ( `title`, `value`, `group`, `remark`) VALUES ('lastCheckMagic', '1435764886', 'magic', '最后更新时间');

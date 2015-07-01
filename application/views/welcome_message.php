@@ -1,7 +1,7 @@
 <div class="content">
     <div class="header">
         <h1 class="page-title">欢迎您, <?php echo $loginUser; ?></h1>
-
+        <a href="/magic">短信通知过期用户及判断用户过期</a>
     </div>
     <div class="main-content">
         <table class="table">

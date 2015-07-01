@@ -153,19 +153,13 @@ class m_members extends CI_Model
         $this->db->where('id', $id);
         $res = $this->db->update($this->table_name, $data);
 
-
         return $res ? true : false;
 
     }
 
-    function getExpiesModels()
+    function getAll()
     {
-        //获取当前时间
-        $nowTime = strtotime("+7 days",time());
-
-        //获取7天内到期用户
-        $this->db->select('m.*');
-        $this->db->from($this->table_name . ' as m');
-        $this->db->where('m.endtime ');
+        $query = $this->db->get($this->table_name);
+        return $query->result_array();
     }
 }
