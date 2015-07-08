@@ -62,7 +62,7 @@
                     <td><?php echo $row['updateName']; ?></td>
                     <td>
                         <select id="optionlink" class="optionlink">
-                            <option value="#">==请选择操作==</option>
+                            <option value="#">请选择操作</option>
                             <option value="/member/edit?id=<?php echo $row['id']; ?>">修改资料</option>
                             <option value="/member/deletebyid?id=<?php echo $row['id']; ?>">删除会员</option>
                             <option value="/member/timeout?id=<?php echo $row['id']; ?>">带宽到期</option>
@@ -88,13 +88,44 @@
            var val = this.value;
             if(val.indexOf('deletebyid') > -1)
             {
-                var res = confirm('确定删除当前会员？');
-                if(res)
-                {
-                    window.location.href = val;
-                }else{
-                    return;
-                }
+                //var res = confirm('确定删除当前会员？');
+                //if(res)
+                //{
+                //    window.location.href = val;
+                //}else{
+                //    return;
+                //}
+                var d = dialog({
+                    title: '请输入管理员密码',
+                    content: '<input id="adminPwd" type="password" value="" /><br><span style="color: red;" id="showmsg"></span>',
+                    cancel: function(){},
+                    cancelValue:"取消",
+                    okValue:"确定",
+                    ok: function () {
+                        var returnVal = $('#adminPwd').val();
+                        var isSuccess = true;
+                        $.ajax({
+                            type : "get",
+                            url : "/login/ajaxCheckPwd?username="+adminName+"&password="+returnVal,
+                            async : false,
+                            success : function(data){
+                                //密码正确
+                                if(data == "true")
+                                {
+                                    window.location.href = val;
+                                }else
+                                {
+                                    $('#showmsg').html('密码不正确,请重新输入');
+                                    setTimeout(function() { $("#showmsg").html(""); }, 2000);
+                                    isSuccess = false;
+                                }
+                            }
+                        });
+                        return isSuccess;
+                    }
+                });
+                d.show();
+                return;
             }
             if(val.indexOf('timeout') > -1)
             {

@@ -22,6 +22,28 @@ class login extends CI_Controller
         $this->load->view('template',$data);
     }
 
+
+    /*
+     * ajax验证用户密码是否正确
+     * url:/login/ajaxCheckPwd?username=?&password=?
+     * */
+    function ajaxCheckPwd()
+    {
+        $getData = $this->input->get();
+
+        $username = $getData['username'];
+        $password = $getData['password'];
+
+        $res = $this->m_adminuser->checkuserlogin($username,$password);
+        if($res) {
+            echo 'true';
+        }else
+        {
+            echo 'false';
+        }
+
+    }
+
     /*
      * 退出登录
      * */

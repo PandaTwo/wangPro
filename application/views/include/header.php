@@ -19,6 +19,8 @@
             $(".knob").knob();
         });
     </script>
+    <script type="text/javascript" src="/static/lib/artDialog/dist/dialog.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/lib/artDialog/css/ui-dialog.css">
     <link rel="stylesheet" type="text/css" href="/static/stylesheets/theme.css">
     <link rel="stylesheet" type="text/css" href="/static/stylesheets/premium.css">
     <link rel="stylesheet" type="text/css" href="/static/lib/pager.css">
@@ -103,5 +105,5 @@
     <?php endif; ?>
 </div>
 <script type="text/javascript" charset="utf-8">
-
+var adminName = '<?php echo isset($_SESSION['adminUserName']) ? $_SESSION['adminUserName'] : ""; ?>';
 </script>
