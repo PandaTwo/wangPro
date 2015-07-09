@@ -133,9 +133,9 @@
         ?>
     </div>
 </div>
-<input type="hidden" id="oneyear" value="<?php echo  date('Y-m-d',strtotime('+1 years',time()))   ?>">
-<input type="hidden" id="oneMonth" value="<?php echo  date('Y-m-d',strtotime('+1 months',time()))   ?>">
-<input type="hidden" id="threeMonth" value="<?php echo  date('Y-m-d',strtotime('+3 months',time()))   ?>">
+<input type="hidden" id="oneyear" value="<?php echo  date('Y-m-d',strtotime('-1 days',strtotime('+1 years',time())))   ?>">
+<input type="hidden" id="oneMonth" value="<?php echo  date('Y-m-d',strtotime('-1 days',strtotime('+1 months',time())))   ?>">
+<input type="hidden" id="threeMonth" value="<?php echo  date('Y-m-d',strtotime('-1 days',strtotime('+3 months',time())))   ?>">
 <script>
     $('#tab').validator();
 

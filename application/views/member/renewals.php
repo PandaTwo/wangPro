@@ -116,9 +116,9 @@
         ?>
     </div>
 </div>
-<input type="hidden" id="oneyear" value="<?php echo  date('Y-m-d',strtotime('+1 years',isset($sourceModel['end_time']) ? intval($sourceModel['end_time']) : time()))   ?>">
-<input type="hidden" id="oneMonth" value="<?php echo  date('Y-m-d',strtotime('+1 months',isset($sourceModel['end_time']) ? intval($sourceModel['end_time']) : time()))   ?>">
-<input type="hidden" id="threeMonth" value="<?php echo  date('Y-m-d',strtotime('+3 months',isset($sourceModel['end_time']) ? intval($sourceModel['end_time']) : time()))   ?>">
+<input type="hidden" id="oneyear" value="<?php echo  date('Y-m-d',strtotime('-1 days',strtotime('+1 years',isset($sourceModel['end_time'])) ? intval($sourceModel['end_time']) : time()))   ?>">
+<input type="hidden" id="oneMonth" value="<?php echo  date('Y-m-d',strtotime('-1 days',strtotime('+1 months',isset($sourceModel['end_time'])) ? intval($sourceModel['end_time']) : time()))   ?>">
+<input type="hidden" id="threeMonth" value="<?php echo  date('Y-m-d',strtotime('-1 days',strtotime('+3 months',isset($sourceModel['end_time'])) ? intval($sourceModel['end_time']) : time()))   ?>">
 <script>
     $('#tab').validator();
 

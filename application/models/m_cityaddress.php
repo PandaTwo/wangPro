@@ -15,7 +15,9 @@ class m_cityaddress extends CI_Model
         $this->load->database();
     }
 
-
+    /*
+     * 获取路径全地址
+     * */
     function getTextAddressByIds($cityids)
     {
         $idArr = explode(',',$cityids);

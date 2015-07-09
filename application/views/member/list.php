@@ -109,7 +109,6 @@
                             url : "/login/ajaxCheckPwd?username="+adminName+"&password="+returnVal,
                             async : false,
                             success : function(data){
-                                //密码正确
                                 if(data == "true")
                                 {
                                     window.location.href = val;

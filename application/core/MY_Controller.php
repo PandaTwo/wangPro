@@ -16,6 +16,7 @@ class MY_Controller extends CI_Controller
         header('Content-Type: text/html; charset=UTF-8');
         $this->checklogin();
         $this->load->model('m_setting');
+        $this->load->model('m_cityaddress');
 
     }
 
@@ -55,19 +56,19 @@ class MY_Controller extends CI_Controller
         //获取图片大小
         if(isset($model['cardpic']))
         {
-            $imgInfo = getimagesize($baseFilePath.$model['cardpic']);
+            $imgInfo = getimagesize($imghostpath.$model['cardpic']);
         }
 
         if(isset($model['cardpic1']))
         {
-            $imgInfo1 = getimagesize($baseFilePath.$model['cardpic1']);
+            $imgInfo1 = getimagesize($imghostpath.$model['cardpic1']);
         }
 
         $htmltemp = '';
         $htmltemp .= '<table>';
         $htmltemp .= '<tr><td>姓名</td><td>' . $model['username'] . '</td></tr>';
         $htmltemp .= '<tr><td>身份证</td><td>' . $model['cardid'] . '</td></tr>';
-        $htmltemp .= '<tr><td>地址</td><td>' . $model['address'] . '</td></tr>';
+        $htmltemp .= '<tr><td>地址</td><td>'.$this->m_cityaddress->getTextAddressByIds($model['cityid']) . $model['address'] . '</td></tr>';
 
         if(count($imgInfo) > 0)
         {

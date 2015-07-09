@@ -41,7 +41,7 @@
         <?php
             function replacePwd($title)
             {
-                $arr = array('mailPwd','smsserverurl','smspwd');
+                $arr = array('mailPwd','smspwd');
                 if(in_array($title,$arr))
                 {
                     return true;
